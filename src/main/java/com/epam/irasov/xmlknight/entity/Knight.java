@@ -8,10 +8,13 @@ public class Knight {
     private List<Ammunition> ammunitionList;
     private int calculatePrice;
 
-    public Knight(String nameKnight){
-        this.nameKnight=nameKnight;
+    public Knight(){
         ammunitionList = new ArrayList<Ammunition>();
-        this.calculatePrice=0;
+    }
+
+    public Knight(String nameKnight){
+        this();
+        this.nameKnight=nameKnight;
     }
 
     public void setNameKnight(String nameKnight){
