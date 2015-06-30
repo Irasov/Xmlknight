@@ -1,37 +1,39 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Armor extends Ammunition {
-    public enum ArmorType {ARMOR, CHAIN_ARMOR};
-    public enum ConstProtection {FULLY,BREAST,CHEST_AND_BACK,CHEST_AND_ARMS,CHEST_AND_LEGS};
-    private ArmorType type;
-    private ConstProtection protection;
-    public Armor(){
+    private Protection protection;
 
-    }
-    public Armor(ConstAmmunition name,ArmorType type,int weight,int price,ConstProtection protection){
-        super(name,weight,price);
-        this.protection=protection;
-        this.type = type;
-    }
+    protected class Protection {
+        private String protection;
 
-    public void setType(ArmorType type){
-        this.type = type;
+        public void setProtection(String protection) {
+            this.protection = protection;
+        }
+
+        public String getProtection() {
+            return this.protection;
+        }
     }
 
-    public ArmorType getType(){
-        return this.type;
+    public Armor() {
+
     }
 
-    public void setProtection(ConstProtection protection){
-        this.protection = protection;
+    public Armor(String name, String type, int weight, int price, String protection) {
+        super(name, type, weight, price);
+        this.protection.setProtection(protection);
     }
 
-    public ConstProtection getProtection() {
-        return protection;
+    public void setProtection(String protection) {
+        this.protection.setProtection(protection);
+    }
+
+    public String getProtection() {
+        return protection.getProtection();
     }
 
     @Override
-    public String toString(){
-        return super.toString()+" | type: "+type+" | protection: "+protection;
+    public String toString() {
+        return super.toString() + " | protection: " + protection.getProtection();
     }
 }

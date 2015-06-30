@@ -3,32 +3,64 @@ package com.epam.irasov.xmlknight.entity;
 import java.util.Comparator;
 
 public abstract class Ammunition {
-    public enum ConstAmmunition {ARMOR, RANGED_WEAPON, MELLE_WEAPON, HELMET, SHIELD}
-
-    ;
     public static final Comparator<Ammunition> WEIGHT_ORDER = new WeightComparator();
     public static final Comparator<Ammunition> NAME_ORDER = new NameComparator();
     public static final Comparator<Ammunition> PRICE_ORDER = new PriceComparator();
-    private ConstAmmunition name;
+    private NameAmmunition name;
+    private AmmunitionType type;
     private int weight;
     private int price;
+
+
+    protected class AmmunitionType {
+        private String type;
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return this.type;
+        }
+    }
+
+    protected class NameAmmunition {
+        private String name;
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+    }
 
     public Ammunition() {
 
     }
 
-    public Ammunition(ConstAmmunition name, int weight, int price) {
-        this.name = name;
+    public Ammunition(String name, String type, int weight, int price) {
+        this.name.setName(name);
+        this.type.setType(type);
         this.weight = weight;
         this.price = price;
     }
 
-    public void setName(ConstAmmunition name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name.setName(name);
     }
 
-    public ConstAmmunition getName() {
-        return this.name;
+    public String getName() {
+        return this.name.getName();
+    }
+
+    public void setType(String type) {
+        this.type.setType(type);
+    }
+
+    public String getType() {
+        return this.type.getType();
     }
 
     public void setWeight(int weight) {
@@ -69,18 +101,18 @@ public abstract class Ammunition {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Ammunition)) return false;
-
         Ammunition that = (Ammunition) o;
-
         if (weight != that.weight) return false;
         if (price != that.price) return false;
-        return !(name != null ? !name.equals(that.name) : that.name != null);
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        return !(type != null ? !type.equals(that.type) : that.type != null);
 
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + weight;
         result = 31 * result + price;
         return result;
@@ -88,6 +120,6 @@ public abstract class Ammunition {
 
     @Override
     public String toString() {
-        return "name: " + getName() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
+        return "name: " + getName() + " |ammunition type: " + getType() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
     }
 }

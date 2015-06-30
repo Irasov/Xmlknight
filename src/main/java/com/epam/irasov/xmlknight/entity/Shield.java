@@ -1,40 +1,39 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Shield extends Ammunition {
-    public enum ShieldType {CROWS,NORMAN,BUCKLER,TORCH,PAVESE};
-    public enum ShieldMaterial {METAL,TREE};
     private ShieldMaterial material;
-    private ShieldType type;
 
+    protected class ShieldMaterial {
+        String material;
 
-    public Shield(){
+        public String getMaterial() {
+            return this.material;
+        }
+
+        public void setMaterial(String material) {
+            this.material = material;
+        }
+    }
+
+    public Shield() {
 
     }
 
-    public Shield(ConstAmmunition name,ShieldType type,int weight,int price,ShieldMaterial material){
-        super(name,weight,price);
-        this.material=material;
-        this.type = type;
+    public Shield(String name, String type, int weight, int price, String material) {
+        super(name, type, weight, price);
+        this.material.setMaterial(material);
     }
 
-    public void setType(ShieldType type){
-        this.type = type;
+    public void setMaterial(String material) {
+        this.material.setMaterial(material);
     }
 
-    public ShieldType getType(){
-        return this.type;
-    }
-
-    public void setMaterial(ShieldMaterial material) {
-        this.material = material;
-    }
-
-    public ShieldMaterial getMaterial() {
-        return material;
+    public String getMaterial() {
+        return material.getMaterial();
     }
 
     @Override
-    public String toString(){
-        return super.toString()+" | type: "+type+" | material: "+material;
+    public String toString() {
+        return super.toString() + " | material: " + material.getMaterial();
     }
 }

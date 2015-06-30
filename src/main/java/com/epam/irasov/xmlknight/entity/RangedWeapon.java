@@ -1,26 +1,15 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class RangedWeapon extends Weapon {
-    public enum RangedWeaponType {BOW,CROSS_BOW,JAVELIN};
     private int numberOfShells;
-    private RangedWeaponType type;
 
-    public RangedWeapon(){
+    public RangedWeapon() {
 
     }
 
-    public RangedWeapon(ConstAmmunition name,RangedWeaponType type,int weight,int price,Captured captured,int numberOfShells){
-        super(name,weight,price,captured);
-        this.numberOfShells=numberOfShells;
-        this.type = type;
-    }
-
-    public void setType(RangedWeaponType type){
-        this.type = type;
-    }
-
-    public RangedWeaponType getType(){
-        return this.type;
+    public RangedWeapon(String name, String type, int weight, int price, Captured captured, int numberOfShells) {
+        super(name, type, weight, price, captured);
+        this.numberOfShells = numberOfShells;
     }
 
     public void setNumberOfShells(int numberOfShells) {
@@ -32,7 +21,7 @@ public class RangedWeapon extends Weapon {
     }
 
     @Override
-    public String toString(){
-        return super.toString()+" | type: "+type+" | number of shells: "+numberOfShells;
+    public String toString() {
+        return super.toString() + " | number of shells: " + numberOfShells;
     }
 }

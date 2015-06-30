@@ -1,40 +1,39 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Helmet extends Ammunition {
-    public enum  HelmetType {NORMAN,DORIE,DEAF};
-    public enum ConstBalaclava {THERE_BALACLAVA,NO_BALACLAVA};
+    private Balaclava balaclava;
 
-    private HelmetType type;
-    private ConstBalaclava balaclava;
+    protected class Balaclava {
+        private String balaclava;
 
-    public Helmet(){
+        public void setBalaclava(String balaclava) {
+            this.balaclava = balaclava;
+        }
+
+        public String getBalaclava() {
+            return this.balaclava;
+        }
+    }
+
+    public Helmet() {
 
     }
 
-    public Helmet(ConstAmmunition name,HelmetType type,int weight,int price, ConstBalaclava balaclava){
-        super(name,weight,price);
-        this.balaclava=balaclava;
-        this.type = type;
+    public Helmet(String name, String type, int weight, int price, String balaclava) {
+        super(name, type, weight, price);
+        this.balaclava.setBalaclava(balaclava);
     }
 
-    public void setType(HelmetType type){
-        this.type = type;
+    public void setBalaclava(String balaclava) {
+        this.balaclava.setBalaclava(balaclava);
     }
 
-    public HelmetType getType(){
-        return this.type;
-    }
-
-    public void setBalaclava(ConstBalaclava balaclava) {
-        this.balaclava = balaclava;
-    }
-
-    public ConstBalaclava getBalaclava(){
-        return balaclava;
+    public String getBalaclava() {
+        return balaclava.getBalaclava();
     }
 
     @Override
-    public String toString(){
-        return super.toString()+" | type: "+type+" | balaclava: "+balaclava;
+    public String toString() {
+        return super.toString() + " | balaclava: " + balaclava.getBalaclava();
     }
 }
