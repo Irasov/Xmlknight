@@ -9,7 +9,7 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class StAXParseKnightr implements Parser {
+public class StAXParseKnightr implements Parsers {
     private XMLInputFactory factory;
 
     public StAXParseKnightr() {

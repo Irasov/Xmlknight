@@ -13,7 +13,7 @@ import java.io.InputStream;
 
 import com.epam.irasov.xmlknight.exception.ParseException;
 
-public class SAXParserKnight implements Parser {
+public class SAXParserKnight implements Parsers {
 
     /*
         public void SchemaParser(InputStream inputStream) {
