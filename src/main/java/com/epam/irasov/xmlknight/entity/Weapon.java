@@ -1,7 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
 public abstract class Weapon extends Ammunition {
-    private Captured captured;
+    private Captured captured = new Captured();
 
     protected class Captured{
         String captured;

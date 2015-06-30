@@ -1,7 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Armor extends Ammunition {
-    private Protection protection;
+    private Protection protection = new Protection();
 
     protected class Protection {
         private String protection;

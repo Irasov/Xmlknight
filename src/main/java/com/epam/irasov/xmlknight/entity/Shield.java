@@ -1,7 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Shield extends Ammunition {
-    private ShieldMaterial material;
+    private ShieldMaterial material = new ShieldMaterial();
 
     protected class ShieldMaterial {
         String material;

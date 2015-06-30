@@ -6,8 +6,8 @@ public abstract class Ammunition {
     public static final Comparator<Ammunition> WEIGHT_ORDER = new WeightComparator();
     public static final Comparator<Ammunition> NAME_ORDER = new NameComparator();
     public static final Comparator<Ammunition> PRICE_ORDER = new PriceComparator();
-    private NameAmmunition name;
-    private AmmunitionType type;
+    private NameAmmunition name = new NameAmmunition();
+    private AmmunitionType type = new AmmunitionType();
     private int weight;
     private int price;
 

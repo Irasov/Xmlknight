@@ -1,7 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Helmet extends Ammunition {
-    private Balaclava balaclava;
+    private Balaclava balaclava = new Balaclava();
 
     protected class Balaclava {
         private String balaclava;
