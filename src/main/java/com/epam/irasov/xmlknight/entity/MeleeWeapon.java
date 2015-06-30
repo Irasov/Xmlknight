@@ -12,11 +12,11 @@ public class MeleeWeapon extends Weapon {
         this.lengthWeapon = lengthWeapon;
     }
 
-    public void setLength_weapon(int length_weapon) {
+    public void setLengthWeapon(int length_weapon) {
         this.lengthWeapon = length_weapon;
     }
 
-    public int getLength_weapon() {
+    public int getLengthWeapon() {
         return lengthWeapon;
     }
 
