@@ -21,7 +21,7 @@ public class SAXParserKnight implements Parsers {
             String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
             SchemaFactory schemaFactory = SchemaFactory.newInstance(language);
             try {
-                schema = schemaFactory.newSchema();//(new File()(SAXParserKnight.class.getClassLoader().getResourceAsStream("knight1.xsd")));
+                schema = schemaFactory.newSchema();//(new File()(SAXParserKnight.class.getClassLoader().getResourceAsStream("knight.xsd")));
                 SAXParserFactory spf = SAXParserFactory.newInstance();
                 spf.setSchema(schema);
                 SAXParser parser = spf.newSAXParser();
