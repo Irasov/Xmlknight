@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <knight>
     <knightName>Don Quixote</knightName>
-    <Ammunition>
+    <ammunition>
         <armor>
-            <name>ARMOR</name>
+            <name>armor</name>
             <weight>20</weight>
             <price>2500</price>
-            <type>CHAIN_ARMOR</type>
-            <protection>FULLY</protection>
+            <type>chain armor</type>
+            <protection>fully</protection>
         </armor>
         <helmet>
-            <name>HELMET</name>
+            <name>helmet</name>
             <weight>3</weight>
             <price>800</price>
-            <type>NORMAN</type>
-            <ConstBalaclava>THERE_BALACLAVA</ConstBalaclava>
+            <type>norman</type>
+            <Balaclava>has a balaclava</Balaclava>
         </helmet>
-        <mellewWapon>
-            <name>MELLE_WEAPON</name>
+        <meleewWapon>
+            <name>melee weapon</name>
             <weight>2</weight>
             <price>2000</price>
-            <Captured>CAPTURED</Captured>
-            <type>SWORD</type>
+            <Captured>captured</Captured>
+            <type>sword</type>
             <lengthWeapon>70</lengthWeapon>
-        </mellewWapon>
+        </meleewWapon>
         <rangedWeapon>
-            <name>RANGED_WEAPON</name>
+            <name>ranged weapon</name>
             <weight>1</weight>
             <price>2600</price>
-            <Captured>CAPTURED</Captured>
-            <type>BOW</type>
+            <Captured>captured</Captured>
+            <type>bow</type>
             <numberOfShells>15</numberOfShells>
         </rangedWeapon>
         <shield>
-            <name>SHIELD</name>
+            <name>shield</name>
             <weight>5</weight>
             <price>1500</price>
-            <type>BUCKLER</type>
-            <material>METAL</material>
+            <type>buckler</type>
+            <material>metal</material>
         </shield>
-    </Ammunition>
+    </ammunition>
 </knight>
