@@ -2,7 +2,7 @@ package com.epam.irasov.xmlknight.runer;
 
 import com.epam.irasov.xmlknight.entity.Knight;
 import com.epam.irasov.xmlknight.logic.Action;
-import com.epam.irasov.xmlknight.parser.Parser;
+import com.epam.irasov.xmlknight.parser.Parsers;
 import com.epam.irasov.xmlknight.parser.ParserFactoryKnight;
 import com.epam.irasov.xmlknight.reporter.Report;
 
@@ -16,7 +16,7 @@ public class Runner {
 
     public static void main(String[] args) throws IOException {
         ParserFactoryKnight knightParserFactory = new ParserFactoryKnight();
-        Parser parser = knightParserFactory.createKnightParser("sax");
+        Parsers parser = knightParserFactory.createKnightParser("sax");
         InputStream inputStream = Runner.class.getClassLoader().getResourceAsStream("knight.xml");
         Knight knight = parser.knightParser(inputStream);
 
@@ -24,7 +24,7 @@ public class Runner {
         Report.report(knight);
         Report.report(Action.searchPrice(knight.getAmmunitionList(), CUSTOM_MIN_PRICE, CUSTOM_MAX_PRICE));
 
-       /* Parser parser2 = knightParserFactory.createKnightParser("stax");
+       /* Parsers parser2 = knightParserFactory.createKnightParser("stax");
         Knight knight1 = parser2.knightParser(inputStream);
         System.out.println(knight1.toString());*/
     }
