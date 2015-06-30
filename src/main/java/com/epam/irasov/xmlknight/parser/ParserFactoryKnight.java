@@ -5,7 +5,7 @@ public class ParserFactoryKnight {
         SAX, STAX, DOM
     }
 
-    public Parser createKnightParser(String typeParser) {
+    public Parsers createKnightParser(String typeParser) {
         TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {
             case SAX:
