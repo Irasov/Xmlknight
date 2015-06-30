@@ -6,14 +6,13 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class KnightParserStAX extends AbstractParser {
+public class StAXParseKnightr implements Parser {
     private XMLInputFactory factory;
 
-    public KnightParserStAX() {
+    public StAXParseKnightr() {
         factory = XMLInputFactory.newInstance();
     }
 
@@ -54,7 +53,7 @@ public class KnightParserStAX extends AbstractParser {
         String name;
         Armor armor;
         Helmet helmet;
-        MelleWeapon melleWeapon;
+        MeleeWeapon melleWeapon;
         RangedWeapon rangedWeapon;
         Shield shield;
         Knight knight = null;

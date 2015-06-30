@@ -1,17 +1,17 @@
 package com.epam.irasov.xmlknight.parser;
 
-public class KnightParserFactory {
+public class ParserFactoryKnight {
     public enum TypeParser {
         SAX, STAX, DOM
     }
 
-    public AbstractParser createKnightParser(String typeParser) {
+    public Parser createKnightParser(String typeParser) {
         TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {
             case SAX:
-                return new KnightParserSAX();
+                return new SAXParserKnight();
             case STAX:
-                return new KnightParserStAX();
+                return new StAXParseKnightr();
             default:
                 throw new EnumConstantNotPresentException(type.getDeclaringClass(), type.name());
         }
