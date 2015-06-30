@@ -14,21 +14,21 @@
             <weight>3</weight>
             <price>800</price>
             <type>norman</type>
-            <Balaclava>has a balaclava</Balaclava>
+            <balaclava>has a balaclava</balaclava>
         </helmet>
-        <meleewWapon>
+        <meleeWeapon>
             <name>melee weapon</name>
             <weight>2</weight>
             <price>2000</price>
-            <Captured>captured</Captured>
+            <captured>captured</captured>
             <type>sword</type>
-            <lengthWeapon>70</lengthWeapon>
-        </meleewWapon>
+            <length>70</length>
+        </meleeWeapon>
         <rangedWeapon>
             <name>ranged weapon</name>
             <weight>1</weight>
             <price>2600</price>
-            <Captured>captured</Captured>
+            <captured>captured</captured>
             <type>bow</type>
             <numberOfShells>15</numberOfShells>
         </rangedWeapon>
