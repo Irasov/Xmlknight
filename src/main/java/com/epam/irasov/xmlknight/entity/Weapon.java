@@ -1,39 +1,27 @@
 package com.epam.irasov.xmlknight.entity;
 
 public abstract class Weapon extends Ammunition {
-    private Captured captured = new Captured();
-
-    protected class Captured{
-        String captured;
-
-        public String getCaptured() {
-            return this.captured;
-        }
-
-        public void setCaptured(String captured) {
-            this.captured = captured;
-        }
-    }
+    private boolean captured;
 
     public Weapon(){
 
     }
 
-    public Weapon(String name,String type, int weight, int price, Captured captured){
+    public Weapon(String name,Type type, int weight, int price, boolean captured){
         super(name,type,weight,price);
         this.captured=captured;
     }
 
-    public void setCaptured(String captured) {
-        this.captured.setCaptured(captured);
+    public void setCaptured(boolean captured) {
+        this.captured=captured;
     }
 
-    public String getCaptured(){
-        return captured.getCaptured();
+    public boolean getCaptured(){
+        return captured;
     }
 
     @Override
     public String toString(){
-        return super.toString()+" | captured: "+captured.getCaptured();
+        return super.toString()+" | captured: "+getCaptured();
     }
 }
