@@ -1,6 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
 import java.util.Comparator;
+import java.util.UUID;
 
 public abstract class Ammunition extends BaseEntity {
     public static final Comparator<Ammunition> WEIGHT_ORDER = new WeightComparator();
@@ -25,10 +26,11 @@ public abstract class Ammunition extends BaseEntity {
     }
 
     public Ammunition() {
-
+        super();
     }
 
-    public Ammunition(String name, Type type, int weight, int price) {
+    public Ammunition(Long id, UUID uuid, String name, Type type, int weight, int price) {
+        super(id,uuid);
         this.name = name;
         this.type = type;
         this.weight = weight;
