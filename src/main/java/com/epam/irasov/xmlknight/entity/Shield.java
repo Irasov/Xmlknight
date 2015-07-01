@@ -1,17 +1,17 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Shield extends Ammunition {
-    private ShieldMaterial material = new ShieldMaterial();
+    private Material material;
 
-    protected class ShieldMaterial {
-        String material;
+    public static class Material {
+        String name;
 
         public String getMaterial() {
-            return this.material;
+            return this.name;
         }
 
-        public void setMaterial(String material) {
-            this.material = material;
+        public void setMaterial(String name) {
+            this.name = name;
         }
     }
 
@@ -19,21 +19,21 @@ public class Shield extends Ammunition {
 
     }
 
-    public Shield(String name, String type, int weight, int price, String material) {
+    public Shield(String name, Type type, int weight, int price, Material material) {
         super(name, type, weight, price);
-        this.material.setMaterial(material);
+        this.material = material;
     }
 
-    public void setMaterial(String material) {
-        this.material.setMaterial(material);
+    public void setMaterial(Material material) {
+        this.material=material;
     }
 
-    public String getMaterial() {
-        return material.getMaterial();
+    public Material getMaterial() {
+        return material;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " | material: " + material.getMaterial();
+        return super.toString() + " | material: " +getMaterial();
     }
 }
