@@ -111,6 +111,6 @@ public abstract class Ammunition extends BaseEntity {
 
     @Override
     public String toString() {
-        return "name: " + getName() + " |ammunition type: " + getType() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
+        return super.toString()+ "name: " + getName() + " |ammunition type: " + getType() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
     }
 }

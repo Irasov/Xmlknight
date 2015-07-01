@@ -1,5 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
+import java.util.UUID;
+
 public class MeleeWeapon extends Weapon {
     private int lengthWeapon;
 
@@ -7,8 +9,8 @@ public class MeleeWeapon extends Weapon {
 
     }
 
-    public MeleeWeapon(String name, Type type, int weight, int price, boolean captured, int lengthWeapon) {
-        super(name, type, weight, price, captured);
+    public MeleeWeapon(Long id, UUID uuid, String name, Type type, int weight, int price, boolean captured, int lengthWeapon) {
+        super(id, uuid, name, type, weight, price, captured);
         this.lengthWeapon = lengthWeapon;
     }
 

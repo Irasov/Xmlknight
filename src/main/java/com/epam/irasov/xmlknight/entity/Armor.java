@@ -1,5 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
+import java.util.UUID;
+
 public class Armor extends Ammunition {
     private Protection protection;
 
@@ -19,8 +21,8 @@ public class Armor extends Ammunition {
 
     }
 
-    public Armor(String name, Type type, int weight, int price, Protection protection) {
-        super(name, type, weight, price);
+    public Armor(Long id, UUID uuid, String name, Type type, int weight, int price, Protection protection) {
+        super(id, uuid, name, type, weight, price);
         this.protection = protection;
     }
 

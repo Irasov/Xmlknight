@@ -1,5 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
+import java.util.UUID;
+
 public class Shield extends Ammunition {
     private Material material;
 
@@ -19,13 +21,13 @@ public class Shield extends Ammunition {
 
     }
 
-    public Shield(String name, Type type, int weight, int price, Material material) {
-        super(name, type, weight, price);
+    public Shield(Long id, UUID uuid, String name, Type type, int weight, int price, Material material) {
+        super(id, uuid, name, type, weight, price);
         this.material = material;
     }
 
     public void setMaterial(Material material) {
-        this.material=material;
+        this.material = material;
     }
 
     public Material getMaterial() {
@@ -34,6 +36,6 @@ public class Shield extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | material: " +getMaterial();
+        return super.toString() + " | material: " + getMaterial();
     }
 }

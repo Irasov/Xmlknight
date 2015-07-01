@@ -1,5 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
+import java.util.UUID;
+
 public class Helmet extends Ammunition {
     private boolean balaclava;
 
@@ -7,8 +9,8 @@ public class Helmet extends Ammunition {
 
     }
 
-    public Helmet(String name, Type type, int weight, int price, boolean balaclava) {
-        super(name, type, weight, price);
+    public Helmet(Long id, UUID uuid, String name, Type type, int weight, int price, boolean balaclava) {
+        super(id, uuid, name, type, weight, price);
         this.balaclava = balaclava;
     }
 

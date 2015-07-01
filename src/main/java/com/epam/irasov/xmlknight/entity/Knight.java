@@ -52,6 +52,6 @@ public class Knight extends BaseEntity{
             str+=element.toString()+"\n";
         }
         str+="Sum gold: "+getCalculatePrice();
-        return str;
+        return super.toString()+ str;
     }
 }
