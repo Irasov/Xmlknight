@@ -3,8 +3,8 @@ package com.epam.irasov.xmlknight.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Knight {
-    private String nameKnight;
+public class Knight extends BaseEntity{
+    private String knightName;
     private List<Ammunition> ammunitionList;
     private int calculatePrice;
 
@@ -14,15 +14,15 @@ public class Knight {
 
     public Knight(String nameKnight){
         this();
-        this.nameKnight=nameKnight;
+        this.knightName =nameKnight;
     }
 
-    public void setNameKnight(String nameKnight){
-        this.nameKnight=nameKnight;
+    public void setKnightName(String knightName){
+        this.knightName = knightName;
     }
 
-    public String getNameKnight(){
-        return nameKnight;
+    public String getKnightName(){
+        return knightName;
     }
 
     public void setAmmunitionList(ArrayList<Ammunition> ammunitionList) {
@@ -44,7 +44,7 @@ public class Knight {
 
     @Override
     public String toString(){
-        String str=" Name knight: "+nameKnight+"\n"+"Ammunition:\n";
+        String str=" Name knight: "+ knightName +"\n"+"Ammunition:\n";
         for(Ammunition element:ammunitionList){
             str+=element.toString()+"\n";
         }
