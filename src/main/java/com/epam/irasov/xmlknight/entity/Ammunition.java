@@ -16,12 +16,17 @@ public abstract class Ammunition extends BaseEntity {
     public static class Type {
         private String name;
 
-        public void setName(String type) {
+        public void setName(String name) {
             this.name = name;
         }
 
         public String getName() {
             return this.name;
+        }
+
+        @Override
+        public String toString() {
+            return name ;
         }
     }
 
@@ -111,6 +116,6 @@ public abstract class Ammunition extends BaseEntity {
 
     @Override
     public String toString() {
-        return super.toString()+ "name: " + getName() + " |ammunition type: " + getType() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
+        return super.toString()+ "name: " + getName() + " |ammunition type: " + getType().toString() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
     }
 }
