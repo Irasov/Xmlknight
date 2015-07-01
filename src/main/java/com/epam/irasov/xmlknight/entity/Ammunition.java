@@ -2,32 +2,20 @@ package com.epam.irasov.xmlknight.entity;
 
 import java.util.Comparator;
 
-public abstract class Ammunition {
+public abstract class Ammunition extends BaseEntity {
     public static final Comparator<Ammunition> WEIGHT_ORDER = new WeightComparator();
     public static final Comparator<Ammunition> NAME_ORDER = new NameComparator();
     public static final Comparator<Ammunition> PRICE_ORDER = new PriceComparator();
-    private NameAmmunition name = new NameAmmunition();
-    private AmmunitionType type = new AmmunitionType();
+    private String name;
+    private Type type;
     private int weight;
     private int price;
 
 
-    protected class AmmunitionType {
-        private String type;
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-            return this.type;
-        }
-    }
-
-    protected class NameAmmunition {
+    public static class Type {
         private String name;
 
-        public void setName(String name) {
+        public void setName(String type) {
             this.name = name;
         }
 
@@ -40,27 +28,27 @@ public abstract class Ammunition {
 
     }
 
-    public Ammunition(String name, String type, int weight, int price) {
-        this.name.setName(name);
-        this.type.setType(type);
+    public Ammunition(String name, Type type, int weight, int price) {
+        this.name = name;
+        this.type = type;
         this.weight = weight;
         this.price = price;
     }
 
     public void setName(String name) {
-        this.name.setName(name);
+        this.name = name;
     }
 
     public String getName() {
-        return this.name.getName();
+        return this.name;
     }
 
-    public void setType(String type) {
-        this.type.setType(type);
+    public void setType(Type type) {
+        this.type = type;
     }
 
-    public String getType() {
-        return this.type.getType();
+    public Type getType() {
+        return this.type;
     }
 
     public void setWeight(int weight) {
