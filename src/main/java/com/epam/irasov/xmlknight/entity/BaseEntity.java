@@ -47,12 +47,12 @@ public abstract class BaseEntity {
         result = 31 * result + (uuid != null ? uuid.hashCode() : 0);
         return result;
     }
-/*
+
     @Override
     public String toString() {
         return "BaseEntity{" +
                 "id=" + id +
                 ", uuid=" + uuid +
                 '}';
-    }*/
+    }
 }

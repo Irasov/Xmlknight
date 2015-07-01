@@ -8,11 +8,11 @@ public class Shield extends Ammunition {
     public static class Material {
         String name;
 
-        public String getMaterial() {
+        public String getName() {
             return this.name;
         }
 
-        public void setMaterial(String name) {
+        public void setName(String name) {
             this.name = name;
         }
 
