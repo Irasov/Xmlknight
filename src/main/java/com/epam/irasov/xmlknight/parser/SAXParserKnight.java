@@ -125,8 +125,12 @@ public class SAXParserKnight implements Parsers {
             }
 
             switch (qName) {
+                case "id":
+                    knight.setId(Long.valueOf(sb.toString()));
+                    knight.setUuid();
+                    break;
                 case "knightName":
-                    knight.setNameKnight(sb.toString());
+                    knight.setKnightName(sb.toString());
                     break;
                 case "armor":
                     knight.addAmmunition(armor);
@@ -155,6 +159,10 @@ public class SAXParserKnight implements Parsers {
 
         private void initializerArmor(String s) {
             switch (tagBody) {
+                case "id":
+                    armor.setId(Long.valueOf(sb.toString()));
+                    armor.setUuid();
+                    break;
                 case "name":
                     armor.setName(s);
                     break;
@@ -165,16 +173,24 @@ public class SAXParserKnight implements Parsers {
                     armor.setPrice(Integer.parseInt(s));
                     break;
                 case "type":
-                    armor.setType(s);
+                    Armor.Type type = new Armor.Type();
+                    type.setName(s);
+                    armor.setType(type);
                     break;
                 case "protection":
-                    armor.setProtection(s);
+                    Armor.Protection protection = new Armor.Protection();
+                    protection.setName(s);
+                    armor.setProtection(protection);
                     break;
             }
         }
 
         private void initializerHelmet(String s) {
             switch (tagBody) {
+                case "id":
+                    helmet.setId(Long.valueOf(sb.toString()));
+                    helmet.setUuid();
+                    break;
                 case "name":
                     helmet.setName(s);
                     break;
@@ -185,16 +201,22 @@ public class SAXParserKnight implements Parsers {
                     helmet.setPrice(Integer.parseInt(s));
                     break;
                 case "type":
-                    helmet.setType(s);
+                    Helmet.Type type = new Helmet.Type();
+                    type.setName(s);
+                    helmet.setType(type);
                     break;
                 case "balaclava":
-                    helmet.setBalaclava(s);
+                    helmet.setBalaclava(Boolean.getBoolean(s));
                     break;
             }
         }
 
         private void initializerMeleeWeapon(String s) {
             switch (tagBody) {
+                case "id":
+                    meleeWeapon.setId(Long.valueOf(sb.toString()));
+                    meleeWeapon.setUuid();
+                    break;
                 case "name":
                     meleeWeapon.setName(s);
                     break;
@@ -205,10 +227,12 @@ public class SAXParserKnight implements Parsers {
                     meleeWeapon.setPrice(Integer.parseInt(s));
                     break;
                 case "captured":
-                    meleeWeapon.setCaptured(s);
+                    meleeWeapon.setCaptured(Boolean.valueOf(s));
                     break;
                 case "type":
-                    meleeWeapon.setType(s);
+                    MeleeWeapon.Type type = new MeleeWeapon.Type();
+                    type.setName(s);
+                    meleeWeapon.setType(type);
                     break;
                 case "length":
                     meleeWeapon.setLengthWeapon(Integer.parseInt(s));
@@ -218,6 +242,10 @@ public class SAXParserKnight implements Parsers {
 
         private void initializerRangedWeapon(String s) {
             switch (tagBody) {
+                case "id":
+                    rangedWeapon.setId(Long.valueOf(sb.toString()));
+                    rangedWeapon.setUuid();
+                    break;
                 case "name":
                     rangedWeapon.setName(s);
                     break;
@@ -228,10 +256,12 @@ public class SAXParserKnight implements Parsers {
                     rangedWeapon.setPrice(Integer.parseInt(s));
                     break;
                 case "captured":
-                    rangedWeapon.setCaptured(s);
+                    rangedWeapon.setCaptured(Boolean.valueOf(s));
                     break;
                 case "type":
-                    rangedWeapon.setType(s);
+                    RangedWeapon.Type type = new RangedWeapon.Type();
+                    type.setName(s);
+                    rangedWeapon.setType(type);
                     break;
                 case "numberOfShells":
                     rangedWeapon.setNumberOfShells(Integer.parseInt(s));
@@ -241,6 +271,10 @@ public class SAXParserKnight implements Parsers {
 
         private void initializerShield(String s) {
             switch (tagBody) {
+                case "id":
+                    shield.setId(Long.valueOf(sb.toString()));
+                    shield.setUuid();
+                    break;
                 case "name":
                     shield.setName(s);
                     break;
@@ -251,10 +285,14 @@ public class SAXParserKnight implements Parsers {
                     shield.setPrice(Integer.parseInt(s));
                     break;
                 case "type":
-                    shield.setType(s);
+                    Shield.Type type = new Shield.Type();
+                    type.setName(s);
+                    shield.setType(type);
                     break;
                 case "material":
-                    shield.setMaterial(s);
+                    Shield.Material material = new Shield.Material();
+                    material.setName(s);
+                    shield.setMaterial(material);
                     break;
             }
         }
