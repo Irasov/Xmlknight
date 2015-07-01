@@ -2,6 +2,8 @@ package com.epam.irasov.xmlknight.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
 
 public class Knight extends BaseEntity{
     private String knightName;
@@ -9,6 +11,7 @@ public class Knight extends BaseEntity{
     private int calculatePrice;
 
     public Knight(){
+        super();
         ammunitionList = new ArrayList<Ammunition>();
     }
 

@@ -6,6 +6,15 @@ public abstract class BaseEntity {
     private Long id;
     private UUID uuid;
 
+    public BaseEntity() {
+
+    }
+
+    public BaseEntity(Long id, UUID uuid) {
+        this.id = id;
+        this.uuid = uuid;
+    }
+
     public UUID getUuid() {
         return uuid;
     }
