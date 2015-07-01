@@ -1,39 +1,27 @@
 package com.epam.irasov.xmlknight.entity;
 
 public class Helmet extends Ammunition {
-    private Balaclava balaclava = new Balaclava();
-
-    protected class Balaclava {
-        private String balaclava;
-
-        public void setBalaclava(String balaclava) {
-            this.balaclava = balaclava;
-        }
-
-        public String getBalaclava() {
-            return this.balaclava;
-        }
-    }
+    private boolean balaclava;
 
     public Helmet() {
 
     }
 
-    public Helmet(String name, String type, int weight, int price, String balaclava) {
+    public Helmet(String name, Type type, int weight, int price, boolean balaclava) {
         super(name, type, weight, price);
-        this.balaclava.setBalaclava(balaclava);
+        this.balaclava = balaclava;
     }
 
-    public void setBalaclava(String balaclava) {
-        this.balaclava.setBalaclava(balaclava);
+    public void setBalaclava(boolean balaclava) {
+        this.balaclava = balaclava;
     }
 
-    public String getBalaclava() {
-        return balaclava.getBalaclava();
+    public boolean getBalaclava() {
+        return balaclava;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " | balaclava: " + balaclava.getBalaclava();
+        return super.toString() + " | balaclava: " + getBalaclava();
     }
 }
