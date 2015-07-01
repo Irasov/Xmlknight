@@ -1,139 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="knight" type="knightType"/>
-  <xs:complexType name="shieldType">
-    <xs:sequence>
-      <xs:element type="nameAmmunition" name="name"/>
-      <xs:element type="xs:int" name="weight"/>
-      <xs:element type="xs:int" name="price"/>
-      <xs:element type="shield"  name="type"/>
-      <xs:element type="material" name="material"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="meleewWaponType">
-    <xs:sequence>
-      <xs:element type="nameAmmunition" name="name"/>
-      <xs:element type="xs:int" name="weight"/>
-      <xs:element type="xs:int" name="price"/>
-      <xs:element type="captured" name="captured"/>
-      <xs:element type="meleeWeapon" name="type"/>
-      <xs:element type="xs:int" name="lengthWeapon"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="rangedWeaponType">
-    <xs:sequence>
-      <xs:element type="nameAmmunition" name="name"/>
-      <xs:element type="xs:int" name="weight"/>
-      <xs:element type="xs:int" name="price"/>
-      <xs:element type="captured" name="captured"/>
-      <xs:element type="rangedWeapon" name="type"/>
-      <xs:element type="xs:int" name="numberOfShells"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ammunitionType">
-    <xs:sequence>
-      <xs:element type="armorType" name="armor"/>
-      <xs:element type="helmetType" name="helmet"/>
-      <xs:element type="meleewWaponType" name="meleeWapon"/>
-      <xs:element type="rangedWeaponType" name="rangedWeapon"/>
-      <xs:element type="shieldType" name="shield"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="helmetType">
-    <xs:sequence>
-      <xs:element type="nameAmmunition" name="name"/>
-      <xs:element type="xs:int" name="weight"/>
-      <xs:element type="xs:int" name="price"/>
-      <xs:element type="helmet" name="type"/>
-      <xs:element type="bacalava" name="balaclava"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="armorType">
-    <xs:sequence>
-      <xs:element type="nameAmmunition" name="name"/>
-      <xs:element type="xs:int" name="weight"/>
-      <xs:element type="xs:int" name="price"/>
-      <xs:element type="armor" name="type"/>
-      <xs:element type="protection" name="protection"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="knightType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="knightName"/>
-      <xs:element type="ammunitionType" name="ammunition"/>
-    </xs:sequence>
-  </xs:complexType>
- <xs:simpleType name="nameAmmunition">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="armor"/>
-      <xs:enumeration value="helmet"/>
-      <xs:enumeration value="shield"/>
-      <xs:enumeration value="ranged weapon"/>
-      <xs:enumeration value="melee weapon"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="shield">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="crows"/>
-      <xs:enumeration value="norman"/>
-      <xs:enumeration value="buckler"/>
-      <xs:enumeration value="torch"/>
-      <xs:enumeration value="pavese"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="material">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="metal"/>
-      <xs:enumeration value="tree"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="captured">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="captured"/>
-      <xs:enumeration value="not captured"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="meleeWeapon">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="sword"/>
-      <xs:enumeration value="dager"/>
-      <xs:enumeration value="mace"/>
-      <xs:enumeration value="spear"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="rangedWeapon">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="bow"/>
-      <xs:enumeration value="cross bow"/>
-      <xs:enumeration value="javelin"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="helmet">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="norman"/>
-      <xs:enumeration value="dorie"/>
-      <xs:enumeration value="deaf"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="bacalava">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="balaclava"/>
-      <xs:enumeration value="not balaclava"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="protection">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="fully"/>
-      <xs:enumeration value="breast"/>
-      <xs:enumeration value="chest and back"/>
-      <xs:enumeration value="chest and arms"/>
-      <xs:enumeration value="chest and legs"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="armor">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="armor"/>
-      <xs:enumeration value="chain armor"/>
-    </xs:restriction>
-  </xs:simpleType>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="knight" type="knightType"/>
+    <xs:complexType name="shieldType">
+        <xs:sequence>
+            <xs:element type="xs:long" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:int" name="weight"/>
+            <xs:element type="xs:int" name="price"/>
+            <xs:element type="xs:string" name="type"/>
+            <xs:element type="xs:string" name="material"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="meleewWaponType">
+        <xs:sequence>
+            <xs:element type="xs:long" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:int" name="weight"/>
+            <xs:element type="xs:int" name="price"/>
+            <xs:element type="xs:boolean" name="captured"/>
+            <xs:element type="xs:string" name="type"/>
+            <xs:element type="xs:int" name="lengthWeapon"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rangedWeaponType">
+        <xs:sequence>
+            <xs:element type="xs:long" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:int" name="weight"/>
+            <xs:element type="xs:int" name="price"/>
+            <xs:element type="xs:boolean" name="captured"/>
+            <xs:element type="xs:string" name="type"/>
+            <xs:element type="xs:int" name="numberOfShells"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ammunitionType">
+        <xs:sequence>
+            <xs:element type="armorType" name="armor"/>
+            <xs:element type="helmetType" name="helmet"/>
+            <xs:element type="meleewWaponType" name="meleeWapon"/>
+            <xs:element type="rangedWeaponType" name="rangedWeapon"/>
+            <xs:element type="shieldType" name="shield"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="helmetType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:int" name="weight"/>
+            <xs:element type="xs:int" name="price"/>
+            <xs:element type="xs:string" name="type"/>
+            <xs:element type="xs:boolean" name="balaclava"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="armorType">
+        <xs:sequence>
+            <xs:element type="xs:long" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:int" name="weight"/>
+            <xs:element type="xs:int" name="price"/>
+            <xs:element type="xs:string" name="type"/>
+            <xs:element type="xs:string" name="protection"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="knightType">
+        <xs:sequence>
+            <xs:element type="xs:long" name="id"/>
+            <xs:element type="xs:string" name="knightName"/>
+            <xs:element type="ammunitionType" name="ammunition"/>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>
