@@ -15,6 +15,11 @@ public class Shield extends Ammunition {
         public void setMaterial(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return  name;
+        }
     }
 
     public Shield() {
@@ -36,6 +41,6 @@ public class Shield extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | material: " + getMaterial();
+        return super.toString() + " | material: " + getMaterial().toString();
     }
 }

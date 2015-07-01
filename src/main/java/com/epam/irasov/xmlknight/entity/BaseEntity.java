@@ -19,8 +19,8 @@ public abstract class BaseEntity {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setUuid() {
+        this.uuid = UUID.randomUUID();
     }
 
     public Long getId() {
@@ -47,12 +47,12 @@ public abstract class BaseEntity {
         result = 31 * result + (uuid != null ? uuid.hashCode() : 0);
         return result;
     }
-
+/*
     @Override
     public String toString() {
         return "BaseEntity{" +
                 "id=" + id +
                 ", uuid=" + uuid +
                 '}';
-    }
+    }*/
 }

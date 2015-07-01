@@ -15,6 +15,11 @@ public class Armor extends Ammunition {
         public void setName(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return  name;
+        }
     }
 
     public Armor() {
@@ -36,6 +41,6 @@ public class Armor extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | protection: " + getProtection();
+        return super.toString() + " | protection: " + getProtection().toString();
     }
 }
