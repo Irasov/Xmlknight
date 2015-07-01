@@ -7,7 +7,7 @@ public class RangedWeapon extends Weapon {
 
     }
 
-    public RangedWeapon(String name, String type, int weight, int price, Captured captured, int numberOfShells) {
+    public RangedWeapon(String name, Type type, int weight, int price, boolean captured, int numberOfShells) {
         super(name, type, weight, price, captured);
         this.numberOfShells = numberOfShells;
     }

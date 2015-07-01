@@ -89,17 +89,18 @@ public abstract class Ammunition extends BaseEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Ammunition)) return false;
+        if (!super.equals(o)) return false;
         Ammunition that = (Ammunition) o;
         if (weight != that.weight) return false;
         if (price != that.price) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return !(type != null ? !type.equals(that.type) : that.type != null);
-
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = super.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + weight;
         result = 31 * result + price;

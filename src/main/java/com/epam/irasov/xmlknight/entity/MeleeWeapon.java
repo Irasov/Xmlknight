@@ -7,7 +7,7 @@ public class MeleeWeapon extends Weapon {
 
     }
 
-    public MeleeWeapon(String name, String type, int weight, int price, Captured captured, int lengthWeapon) {
+    public MeleeWeapon(String name, Type type, int weight, int price, boolean captured, int lengthWeapon) {
         super(name, type, weight, price, captured);
         this.lengthWeapon = lengthWeapon;
     }
