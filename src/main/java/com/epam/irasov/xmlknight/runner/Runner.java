@@ -1,18 +1,13 @@
 package com.epam.irasov.xmlknight.runner;
 
-import com.epam.irasov.xmlknight.entity.Ammunition;
-import com.epam.irasov.xmlknight.entity.Armor;
-import com.epam.irasov.xmlknight.entity.Helmet;
 import com.epam.irasov.xmlknight.entity.Knight;
 import com.epam.irasov.xmlknight.logic.Action;
 import com.epam.irasov.xmlknight.parser.Parsers;
 import com.epam.irasov.xmlknight.parser.ParserFactoryKnight;
 import com.epam.irasov.xmlknight.reporter.Report;
-import com.epam.irasov.xmlknight.util.PropertyManager;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
 
 public class Runner {
     public static final String CUSTOM_SORT_CRITERION = "weight";
