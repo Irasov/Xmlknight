@@ -50,9 +50,6 @@ public abstract class BaseEntity {
 
     @Override
     public String toString() {
-        return "BaseEntity{" +
-                "id=" + id +
-                ", uuid=" + uuid +
-                '}';
+        return  "id: " + id+" |" + "uuid: " + uuid+" |";
     }
 }

@@ -12,7 +12,6 @@ public abstract class Ammunition extends BaseEntity {
     private int weight;
     private int price;
 
-
     public static class Type {
         private String name;
 

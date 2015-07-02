@@ -30,6 +30,9 @@ public class Knight extends BaseEntity{
 
     public void setAmmunitionList(ArrayList<Ammunition> ammunitionList) {
         this.ammunitionList = ammunitionList;
+        for(Ammunition ammunition:ammunitionList){
+            this.calculatePrice +=ammunition.getPrice();
+        }
     }
 
     public List<Ammunition> getAmmunitionList(){
