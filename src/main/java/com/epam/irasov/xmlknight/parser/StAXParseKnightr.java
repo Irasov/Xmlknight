@@ -18,9 +18,9 @@ public class StAXParseKnightr implements Parsers {
 
     @Override
     public Knight knightParser(InputStream inputStream) {
+        Knight knight = null;
         XMLStreamReader reader = null;
         String name;
-        Knight knight = null;
         // factory = XMLInputFactory.newInstance();
         try {
             reader = factory.createXMLStreamReader(inputStream);
@@ -29,7 +29,7 @@ public class StAXParseKnightr implements Parsers {
                 if (type == XMLStreamConstants.START_ELEMENT) {
                     name = reader.getLocalName();
                     if ("knight".equals(name)) {
-                        knight = new Knight(reader.getText());
+                        knight = new Knight("SEREGA");
                     }
                 }
             }
