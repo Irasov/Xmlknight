@@ -10,6 +10,10 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.epam.irasov.xmlknight.exception.ParseException;
 
@@ -48,12 +52,10 @@ public class SAXParserKnight implements Parsers {
     }
 
     private static class KnightHandler extends DefaultHandler {
+        private Map<String, Ammunition> ammunitions = new HashMap<>();
         private Knight knight;
-        private Armor armor;
-        private Helmet helmet;
-        private MeleeWeapon meleeWeapon;
-        private RangedWeapon rangedWeapon;
-        private Shield shield;
+        private List<Ammunition> ammunitionList;
+        private int numberAmmunition = -1;
         private StringBuilder sb = new StringBuilder();
         private String tagBody;
         private String nameAmmunition = "";
@@ -62,15 +64,21 @@ public class SAXParserKnight implements Parsers {
             return knight;
         }
 
-       /* @Override
+        @Override
         public void startDocument() throws SAXException {
-            System.out.println("Start");
+            ammunitionList = new ArrayList<>();
+            ammunitions.put("armor", new Armor());
+            ammunitions.put("helmet", new Helmet());
+            ammunitions.put("meleeWeapon", new MeleeWeapon());
+            ammunitions.put("rangedWeapon", new RangedWeapon());
+            ammunitions.put("shield", new Shield());
+
         }
 
         @Override
         public void endDocument() throws SAXException {
-            System.out.println("end");
-        }*/
+            knight.setAmmunitionList((ArrayList<Ammunition>) ammunitionList);
+        }
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -78,49 +86,35 @@ public class SAXParserKnight implements Parsers {
                 case "knight":
                     knight = new Knight();
                     break;
-                case "armor":
-                    armor = new Armor();
+            }
+            for (Map.Entry<String, Ammunition> entry : ammunitions.entrySet()) {
+                if (qName.equals(entry.getKey())) {
+                    ammunitionList.add(entry.getValue());
                     nameAmmunition = qName;
-                    break;
-                case "helmet":
-                    helmet = new Helmet();
-                    nameAmmunition = qName;
-                    break;
-                case "meleeWeapon":
-                    meleeWeapon = new MeleeWeapon();
-                    nameAmmunition = qName;
-                    break;
-                case "rangedWeapon":
-                    rangedWeapon = new RangedWeapon();
-                    nameAmmunition = qName;
-                    break;
-                case "shield":
-                    shield = new Shield();
-                    nameAmmunition = qName;
-                default:
-                    sb.setLength(0);
-                    tagBody = qName;
+                    numberAmmunition++;
+                }
+                tagBody = qName;
+                sb.setLength(0);
             }
         }
 
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-
             switch (nameAmmunition) {
                 case "armor":
-                    initializerArmor(sb.toString());
+                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
                     break;
                 case "helmet":
-                    initializerHelmet(sb.toString());
+                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
                     break;
                 case "meleeWeapon":
-                    initializerMeleeWeapon(sb.toString());
+                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
                     break;
                 case "rangedWeapon":
-                    initializerRangedWeapon(sb.toString());
+                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
                     break;
                 case "shield":
-                    initializerShield(sb.toString());
+                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
                     break;
             }
 
@@ -132,23 +126,7 @@ public class SAXParserKnight implements Parsers {
                 case "knightName":
                     knight.setKnightName(sb.toString());
                     break;
-                case "armor":
-                    knight.addAmmunition(armor);
-                    break;
-                case "helmet":
-                    knight.addAmmunition(helmet);
-                    break;
-                case "meleeWeapon":
-                    knight.addAmmunition(meleeWeapon);
-                    break;
-                case "rangedWeapon":
-                    knight.addAmmunition(rangedWeapon);
-                    break;
-                case "shield":
-                    knight.addAmmunition(shield);
-                    break;
             }
-
         }
 
         @Override
@@ -157,147 +135,116 @@ public class SAXParserKnight implements Parsers {
             sb.append(str);
         }
 
-        private void initializerArmor(String s) {
+        private void initializerAmmunition(int numberAmmunition, String nameAmmunition, String s) {
             switch (tagBody) {
                 case "id":
-                    armor.setId(Long.valueOf(sb.toString()));
-                    armor.setUuid();
+                    ammunitionList.get(numberAmmunition).setId(Long.valueOf(sb.toString()));
+                    ammunitionList.get(numberAmmunition).setUuid();
                     break;
                 case "name":
-                    armor.setName(s);
+                    ammunitionList.get(numberAmmunition).setName(s);
                     break;
                 case "weight":
-                    armor.setWeight(Integer.parseInt(s));
+                    ammunitionList.get(numberAmmunition).setWeight(Integer.parseInt(s));
                     break;
                 case "price":
-                    armor.setPrice(Integer.parseInt(s));
+                    ammunitionList.get(numberAmmunition).setPrice(Integer.parseInt(s));
                     break;
+            }
+            switch (nameAmmunition) {
+                case "armor":
+                    initializerArmor(s);
+                    break;
+                case "helmet":
+                    initializerHelmet(s);
+                    break;
+                case "meleeWeapon":
+                    initializerMeleeWeapon(s);
+                    break;
+                case "rangedWeapon":
+                    initializerRangedWeapon(s);
+                    break;
+                case "shield":
+                    initializerShield(s);
+                    break;
+            }
+
+        }
+
+        private void initializerArmor(String s) {
+            switch (tagBody) {
                 case "type":
                     Armor.Type type = new Armor.Type();
                     type.setName(s);
-                    armor.setType(type);
+                    ammunitionList.get(numberAmmunition).setType(type);
                     break;
                 case "protection":
                     Armor.Protection protection = new Armor.Protection();
                     protection.setName(s);
-                    armor.setProtection(protection);
+                    ((Armor) ammunitionList.get(numberAmmunition)).setProtection(protection);
                     break;
             }
         }
 
         private void initializerHelmet(String s) {
             switch (tagBody) {
-                case "id":
-                    helmet.setId(Long.valueOf(sb.toString()));
-                    helmet.setUuid();
-                    break;
-                case "name":
-                    helmet.setName(s);
-                    break;
-                case "weight":
-                    helmet.setWeight(Integer.parseInt(s));
-                    break;
-                case "price":
-                    helmet.setPrice(Integer.parseInt(s));
-                    break;
                 case "type":
                     Helmet.Type type = new Helmet.Type();
                     type.setName(s);
-                    helmet.setType(type);
+                    ammunitionList.get(numberAmmunition).setType(type);
                     break;
                 case "balaclava":
-                    helmet.setBalaclava(Boolean.getBoolean(s));
+                    ((Helmet) ammunitionList.get(numberAmmunition)).setBalaclava(Boolean.getBoolean(s));
                     break;
             }
         }
 
         private void initializerMeleeWeapon(String s) {
             switch (tagBody) {
-                case "id":
-                    meleeWeapon.setId(Long.valueOf(sb.toString()));
-                    meleeWeapon.setUuid();
-                    break;
-                case "name":
-                    meleeWeapon.setName(s);
-                    break;
-                case "weight":
-                    meleeWeapon.setWeight(Integer.parseInt(s));
-                    break;
-                case "price":
-                    meleeWeapon.setPrice(Integer.parseInt(s));
-                    break;
                 case "captured":
-                    meleeWeapon.setCaptured(Boolean.valueOf(s));
+                    ((MeleeWeapon) ammunitionList.get(numberAmmunition)).setCaptured(Boolean.valueOf(s));
                     break;
                 case "type":
                     MeleeWeapon.Type type = new MeleeWeapon.Type();
                     type.setName(s);
-                    meleeWeapon.setType(type);
+                    ammunitionList.get(numberAmmunition).setType(type);
                     break;
                 case "length":
-                    meleeWeapon.setLengthWeapon(Integer.parseInt(s));
+                    ((MeleeWeapon) ammunitionList.get(numberAmmunition)).setLengthWeapon(Integer.parseInt(s));
                     break;
             }
         }
 
         private void initializerRangedWeapon(String s) {
             switch (tagBody) {
-                case "id":
-                    rangedWeapon.setId(Long.valueOf(sb.toString()));
-                    rangedWeapon.setUuid();
-                    break;
-                case "name":
-                    rangedWeapon.setName(s);
-                    break;
-                case "weight":
-                    rangedWeapon.setWeight(Integer.parseInt(s));
-                    break;
-                case "price":
-                    rangedWeapon.setPrice(Integer.parseInt(s));
-                    break;
                 case "captured":
-                    rangedWeapon.setCaptured(Boolean.valueOf(s));
+                    ((RangedWeapon) ammunitionList.get(numberAmmunition)).setCaptured(Boolean.valueOf(s));
                     break;
                 case "type":
                     RangedWeapon.Type type = new RangedWeapon.Type();
                     type.setName(s);
-                    rangedWeapon.setType(type);
+                    ammunitionList.get(numberAmmunition).setType(type);
                     break;
                 case "numberOfShells":
-                    rangedWeapon.setNumberOfShells(Integer.parseInt(s));
+                    ((RangedWeapon) ammunitionList.get(numberAmmunition)).setNumberOfShells(Integer.parseInt(s));
                     break;
             }
         }
 
         private void initializerShield(String s) {
             switch (tagBody) {
-                case "id":
-                    shield.setId(Long.valueOf(sb.toString()));
-                    shield.setUuid();
-                    break;
-                case "name":
-                    shield.setName(s);
-                    break;
-                case "weight":
-                    shield.setWeight(Integer.parseInt(s));
-                    break;
-                case "price":
-                    shield.setPrice(Integer.parseInt(s));
-                    break;
                 case "type":
                     Shield.Type type = new Shield.Type();
                     type.setName(s);
-                    shield.setType(type);
+                    ammunitionList.get(numberAmmunition).setType(type);
                     break;
                 case "material":
                     Shield.Material material = new Shield.Material();
                     material.setName(s);
-                    shield.setMaterial(material);
+                    ((Shield) ammunitionList.get(numberAmmunition)).setMaterial(material);
                     break;
             }
         }
-
-
     }
 }
 
