@@ -22,6 +22,7 @@ public class Runner {
         Action.sortAmmunition(knight.getAmmunitionList(), CUSTOM_SORT_CRITERION);
         Report.report(knight);
         Report.report(Action.searchPrice(knight.getAmmunitionList(), CUSTOM_MIN_PRICE, CUSTOM_MAX_PRICE));
+        String s = "Armor.ley";
      /*   Parsers parser2 = knightParserFactory.createKnightParser("stax");
         Knight knight1 = parser2.knightParser(inputStream);
         System.out.println(knight1);*/

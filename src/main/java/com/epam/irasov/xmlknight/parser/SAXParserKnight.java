@@ -67,25 +67,15 @@ public class SAXParserKnight implements Parsers {
 
         @Override
         public void startDocument() throws SAXException {
-          /*  PropertyManager propertyManager = new PropertyManager();
+            PropertyManager propertyManager = new PropertyManager();
             propertyManager.loadProperty();
 
             try {
                 ammunitions = propertyManager.getPropertyAmmunition();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            }*/
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+                e.printStackTrace(); // remake in Logger
+            }
             ammunitionList = new ArrayList<>();
-            ammunitions.put("armor", new Armor());
-            ammunitions.put("helmet", new Helmet());
-            ammunitions.put("meleeWeapon", new MeleeWeapon());
-            ammunitions.put("rangedWeapon", new RangedWeapon());
-            ammunitions.put("shield", new Shield());
-
         }
 
         @Override
