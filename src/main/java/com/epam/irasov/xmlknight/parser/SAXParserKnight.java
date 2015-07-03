@@ -59,7 +59,7 @@ public class SAXParserKnight implements Parsers {
         private int numberAmmunition = -1;
         private StringBuilder sb = new StringBuilder();
         private String tagBody;
-        private String nameAmmunition = "";
+        private String rootTag;
 
         public Knight getKnight() {
             return knight;
@@ -85,51 +85,55 @@ public class SAXParserKnight implements Parsers {
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-            switch (qName) {
-                case "knight":
-                    knight = new Knight();
-                    break;
+            if ("knight".equals(qName)) {
+                knight = new Knight();
+                rootTag = qName;
             }
+
             for (Map.Entry<String, Ammunition> entry : ammunitions.entrySet()) {
                 if (qName.equals(entry.getKey())) {
                     ammunitionList.add(entry.getValue());
-                    nameAmmunition = qName;
+                    rootTag = qName;
                     numberAmmunition++;
                 }
                 tagBody = qName;
-                sb.setLength(0);
             }
         }
 
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-            switch (nameAmmunition) {
-                case "armor":
-                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
-                    break;
-                case "helmet":
-                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
-                    break;
-                case "meleeWeapon":
-                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
-                    break;
-                case "rangedWeapon":
-                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
-                    break;
-                case "shield":
-                    initializerAmmunition(numberAmmunition, nameAmmunition, sb.toString());
-                    break;
+
+            if("knight".equals(rootTag)) {
+                switch (qName) {
+                    case "id":
+                        knight.setId(Long.valueOf(sb.toString()));
+                        knight.setUuid();
+                        break;
+                    case "name":
+                        knight.setKnightName(sb.toString());
+                        break;
+                }
             }
 
-            switch (qName) {
-                case "id":
-                    knight.setId(Long.valueOf(sb.toString()));
-                    knight.setUuid();
+            switch (rootTag) {
+                case "armor":
+                    initializerAmmunition(numberAmmunition, rootTag, sb.toString());
                     break;
-                case "knightName":
-                    knight.setKnightName(sb.toString());
+                case "helmet":
+                    initializerAmmunition(numberAmmunition, rootTag, sb.toString());
+                    break;
+                case "meleeWeapon":
+                    initializerAmmunition(numberAmmunition, rootTag, sb.toString());
+                    break;
+                case "rangedWeapon":
+                    initializerAmmunition(numberAmmunition, rootTag, sb.toString());
+                    break;
+                case "shield":
+                    initializerAmmunition(numberAmmunition, rootTag, sb.toString());
                     break;
             }
+            sb.setLength(0);
+            tagBody = "";
         }
 
         @Override
