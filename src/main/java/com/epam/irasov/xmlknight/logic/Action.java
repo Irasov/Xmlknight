@@ -1,6 +1,7 @@
 package com.epam.irasov.xmlknight.logic;
 
 import com.epam.irasov.xmlknight.entity.Ammunition;
+import com.epam.irasov.xmlknight.entity.NamedEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +20,7 @@ public class Action {
             Collections.sort(a, Ammunition.PRICE_ORDER);
         }
         if (variant == CONST_SORT_NAME) {
-            Collections.sort(a, Ammunition.NAME_ORDER);
+            Collections.sort(a, NamedEntity.NAME_ORDER);
         }
     }
 
