@@ -2,13 +2,11 @@ package com.epam.irasov.xmlknight.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
 
 public class Knight extends BaseEntity{
-    private String knightName;
+    private String name;
     private List<Ammunition> ammunitionList;
-    private int calculatePrice;
+    private int ammunitionPrice;
 
     public Knight(){
         super();
@@ -17,21 +15,21 @@ public class Knight extends BaseEntity{
 
     public Knight(String nameKnight){
         this();
-        this.knightName =nameKnight;
+        this.name =nameKnight;
     }
 
     public void setKnightName(String knightName){
-        this.knightName = knightName;
+        this.name = knightName;
     }
 
     public String getKnightName(){
-        return knightName;
+        return name;
     }
 
     public void setAmmunitionList(ArrayList<Ammunition> ammunitionList) {
         this.ammunitionList = ammunitionList;
         for(Ammunition ammunition:ammunitionList){
-            this.calculatePrice +=ammunition.getPrice();
+            this.ammunitionPrice +=ammunition.getPrice();
         }
     }
 
@@ -41,20 +39,20 @@ public class Knight extends BaseEntity{
 
     public void addAmmunition(Ammunition ammunitionTo){
         this.ammunitionList.add(ammunitionTo);
-        this.calculatePrice += ammunitionTo.getPrice();
+        this.ammunitionPrice += ammunitionTo.getPrice();
     }
 
-    public int getCalculatePrice(){
-        return this.calculatePrice;
+    public int getAmmunitionPrice(){
+        return this.ammunitionPrice;
     }
 
     @Override
     public String toString(){
-        String str=" Name knight: "+ knightName +"\n"+"Ammunition:\n";
+        String str=" Name knight: "+ name +"\n"+"Ammunition:\n";
         for(Ammunition element:ammunitionList){
             str+=element.toString()+"\n";
         }
-        str+="Sum gold: "+getCalculatePrice();
+        str+="Ammunition price: "+ getAmmunitionPrice();
         return super.toString()+ str;
     }
 }

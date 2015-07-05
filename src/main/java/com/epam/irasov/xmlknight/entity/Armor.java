@@ -5,20 +5,12 @@ import java.util.UUID;
 public class Armor extends Ammunition {
     private Protection protection;
 
-    public static class Protection {
-        private String name;
-
-        public String getName() {
-            return name;
+    public static class Protection extends NamedEntity {
+        public Protection() {
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return  name;
+        public Protection(Long id, UUID uuid, String name) {
+            super(id, uuid, name);
         }
     }
 
