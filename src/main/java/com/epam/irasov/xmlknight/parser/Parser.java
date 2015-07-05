@@ -4,7 +4,7 @@ import com.epam.irasov.xmlknight.entity.Knight;
 
 import java.io.InputStream;
 
-public interface Parsers {
+public interface Parser {
 
    Knight knightParser(InputStream inputStream);
 }
