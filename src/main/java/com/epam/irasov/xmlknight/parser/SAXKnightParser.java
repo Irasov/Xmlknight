@@ -77,7 +77,7 @@ public class SAXKnightParser implements Parser {
         private String firstTagBody;
         private String rootTagBody;
         private String secondTagBody = "";
-        Class cl;
+        private Class cl;
 
         public Knight getKnight() {
             return knight;
@@ -93,14 +93,14 @@ public class SAXKnightParser implements Parser {
                 propertyBodyTag.loadProperty(FileOperation.LoadProperty(ROOT_BODY_TAG_PROPERTIES));
                 rootTagBodyList = propertyBodyTag.getPropertyBodyTag();
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                LOGGER.info(e);
+                throw new ParseException(e);
             }
 
             propertyAmmunition.loadProperty(FileOperation.LoadProperty(AMMUNITION_PROPERTIES));
             try {
                 ammunition = propertyAmmunition.getPropertyAmmunition();
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                LOGGER.info(e);
+                throw new ParseException(e);
             }
             ammunitionList = new ArrayList<>();
         }
@@ -118,8 +118,8 @@ public class SAXKnightParser implements Parser {
                     rootTagBody = qName;
                     break;
             }
-            for (String TagBody : secondTagBodyList) {
-                if (qName.equals(TagBody))
+            for (String tagBody : secondTagBodyList) {
+                if (qName.equals(tagBody))
                     secondTagBody = qName;
             }
 
@@ -128,7 +128,7 @@ public class SAXKnightParser implements Parser {
                     try {
                         cl = Class.forName(entry.getValue());
                     } catch (ClassNotFoundException e) {
-                        LOGGER.info(e);
+                        throw new ParseException(e);
                     }
                     try {
                         ammunitionList.add((Ammunition) cl.newInstance());
@@ -155,7 +155,7 @@ public class SAXKnightParser implements Parser {
                         knight.setUuid();
                         break;
                     case TAG_NAME:
-                        knight.setKnightName(sb.toString());
+                        knight.setName(sb.toString());
                         break;
                 }
             }
