@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <knight>
     <id>1</id>
-    <uuid/>
     <name>Don Quixote</name>
     <ammunition>
         <armor>
@@ -63,7 +62,7 @@
                 <name>buckler</name>
             </type>
             <material>
-                <id>7</id>
+                <id>10</id>
                 <name>metal</name>
             </material>
         </shield>
