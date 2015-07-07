@@ -19,12 +19,14 @@ public class Runner {
     public static final int CUSTOM_MIN_PRICE = 500;
     public static final int CUSTOM_MAX_PRICE = 1500;
     public static final String XML_FILE = "knight.xml";
-    public static final String CUSTOM_PARSER = "sax";
+    public static final String CUSTOM_SAX_PARSER = "sax";
+    public static final String CUSTOM_STAX_PARSER = "stax";
     private static Logger LOGGER = Logger.getLogger(Runner.class);
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         KnightParserFactory knightParserFactory = new KnightParserFactory();
-        Parser parser = knightParserFactory.createKnightParser(CUSTOM_PARSER);
+        //Parser parser = knightParserFactory.createKnightParser(CUSTOM_SAX_PARSER);
+       Parser parser = knightParserFactory.createKnightParser(CUSTOM_STAX_PARSER);
         try {
             InputStream inputStream = Runner.class.getClassLoader().getResourceAsStream(XML_FILE);
             Knight knight = parser.knightParser(inputStream);
@@ -32,7 +34,7 @@ public class Runner {
             Report.report(knight);
             Report.report(Action.searchPrice(knight.getAmmunitionList(), CUSTOM_MIN_PRICE, CUSTOM_MAX_PRICE));
         }catch (IllegalArgumentException e){
-            LOGGER.info("FILE NOT FOUND: "+e);
+            LOGGER.info(e);
         }
     }
 }
