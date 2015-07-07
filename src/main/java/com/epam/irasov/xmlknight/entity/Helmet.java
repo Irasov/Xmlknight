@@ -24,6 +24,6 @@ public class Helmet extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | balaclava: " + getBalaclava();
+        return super.toString() + " |balaclava: " + getBalaclava();
     }
 }

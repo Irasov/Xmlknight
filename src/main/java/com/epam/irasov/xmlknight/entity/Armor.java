@@ -33,6 +33,6 @@ public class Armor extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | protection: " + getProtection().toString();
+        return super.toString() + " |protection: " + getProtection().toString();
     }
 }

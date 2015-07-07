@@ -33,6 +33,6 @@ public class Shield extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | material: " + getMaterial().toString();
+        return super.toString() + " |material: " + getMaterial().toString();
     }
 }

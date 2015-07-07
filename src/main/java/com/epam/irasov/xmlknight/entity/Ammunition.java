@@ -90,6 +90,6 @@ public abstract class Ammunition extends NamedEntity {
 
     @Override
     public String toString() {
-        return super.toString()  + " |ammunition type: " + getType().toString() + " | weight(kg): " + getWeight() + " | price(gold): " + getPrice();
+        return super.toString()  + "ammunition type: " + getType().toString() + "weight(kg): " + getWeight() + " | price(gold): " + getPrice();
     }
 }

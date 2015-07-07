@@ -24,6 +24,6 @@ public class MeleeWeapon extends Weapon {
 
     @Override
     public String toString() {
-        return super.toString() + " | length weapon(cm): " + lengthWeapon;
+        return super.toString() + " |length weapon(cm): " + lengthWeapon;
     }
 }

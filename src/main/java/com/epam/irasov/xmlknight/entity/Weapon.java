@@ -24,6 +24,6 @@ public abstract class Weapon extends Ammunition {
 
     @Override
     public String toString() {
-        return super.toString() + " | captured: " + getCaptured();
+        return super.toString() + " |captured: " + getCaptured();
     }
 }

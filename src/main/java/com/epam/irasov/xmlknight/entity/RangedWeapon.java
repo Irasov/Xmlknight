@@ -24,6 +24,6 @@ public class RangedWeapon extends Weapon {
 
     @Override
     public String toString() {
-        return super.toString() + " | number of shells: " + numberOfShells;
+        return super.toString() + " |number of shells: " + numberOfShells;
     }
 }

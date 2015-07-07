@@ -3,56 +3,56 @@ package com.epam.irasov.xmlknight.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Knight extends BaseEntity{
+public class Knight extends BaseEntity {
     private String name;
     private List<Ammunition> ammunitionList;
     private int ammunitionPrice;
 
-    public Knight(){
+    public Knight() {
         super();
         ammunitionList = new ArrayList<Ammunition>();
     }
 
-    public Knight(String nameKnight){
+    public Knight(String nameKnight) {
         this();
-        this.name =nameKnight;
+        this.name = nameKnight;
     }
 
-    public void setKnightName(String knightName){
+    public void setName(String knightName) {
         this.name = knightName;
     }
 
-    public String getKnightName(){
+    public String getName() {
         return name;
     }
 
     public void setAmmunitionList(ArrayList<Ammunition> ammunitionList) {
         this.ammunitionList = ammunitionList;
-        for(Ammunition ammunition:ammunitionList){
-            this.ammunitionPrice +=ammunition.getPrice();
+        for (Ammunition ammunition : ammunitionList) {
+            this.ammunitionPrice += ammunition.getPrice();
         }
     }
 
-    public List<Ammunition> getAmmunitionList(){
+    public List<Ammunition> getAmmunitionList() {
         return ammunitionList;
     }
 
-    public void addAmmunition(Ammunition ammunitionTo){
+    public void addAmmunition(Ammunition ammunitionTo) {
         this.ammunitionList.add(ammunitionTo);
         this.ammunitionPrice += ammunitionTo.getPrice();
     }
 
-    public int getAmmunitionPrice(){
+    public int getAmmunitionPrice() {
         return this.ammunitionPrice;
     }
 
     @Override
-    public String toString(){
-        String str=" Name knight: "+ name +"\n"+"Ammunition:\n";
-        for(Ammunition element:ammunitionList){
-            str+=element.toString()+"\n";
+    public String toString() {
+        String str = " Name knight: " + name + "\n" + "Ammunition:\n";
+        for (Ammunition element : ammunitionList) {
+            str += element.toString() + "\n";
         }
-        str+="Ammunition price: "+ getAmmunitionPrice();
-        return super.toString()+ str;
+        str += "Ammunition price: " + getAmmunitionPrice();
+        return super.toString() + str;
     }
 }
