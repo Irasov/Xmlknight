@@ -2,9 +2,6 @@ package com.epam.irasov.xmlknight.parser;
 
 import com.epam.irasov.xmlknight.entity.*;
 import com.epam.irasov.xmlknight.exception.ParseException;
-import com.epam.irasov.xmlknight.util.FileOperation;
-import com.epam.irasov.xmlknight.util.PropertyManagerAmmunition;
-import com.epam.irasov.xmlknight.util.PropertyManagerBodyTag;
 import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
@@ -15,8 +12,6 @@ import java.io.InputStream;
 import java.util.*;
 
 public class StAXKnightParser implements Parser {
-
-    private static Logger LOGGER = Logger.getLogger(SAXKnightParser.class);
 
     private static final String TAG_AMMUNITION = "ammunition";
     private static final String TAG_NAME = "name";
