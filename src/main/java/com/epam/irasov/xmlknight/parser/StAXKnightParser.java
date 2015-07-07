@@ -2,7 +2,6 @@ package com.epam.irasov.xmlknight.parser;
 
 import com.epam.irasov.xmlknight.entity.*;
 import com.epam.irasov.xmlknight.exception.ParseException;
-import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
