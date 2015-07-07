@@ -8,12 +8,13 @@ public class FileOperation {
     private static Logger LOGGER = Logger.getLogger(FileOperation.class);
 
     public static InputStream LoadProperty(String filename) {
+        InputStream in = null;
         try {
-            InputStream in = FileOperation.class.getClassLoader().getResourceAsStream(filename);
+             in = FileOperation.class.getClassLoader().getResourceAsStream(filename);
             return in;
         } catch (IllegalArgumentException e) {
             LOGGER.info("FILE NOT FOUND" + e);
         }
-        return null;
+        return in;
     }
 }
