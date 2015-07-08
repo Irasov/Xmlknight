@@ -88,16 +88,16 @@ public class SAXKnightParser implements Parser {
         public void startDocument() throws SAXException {
             PropertyManagerBodyTag propertyBodyTag = new PropertyManagerBodyTag();
             PropertyManagerAmmunition propertyAmmunition = new PropertyManagerAmmunition();
-            propertyBodyTag.loadProperty(FileOperation.LoadProperty(SECOND_BODY_TAG_PROPERTIES));
+            propertyBodyTag.loadProperty(FileOperation.load(SECOND_BODY_TAG_PROPERTIES));
             try {
                 secondTagBodyList = propertyBodyTag.getPropertyBodyTag();
-                propertyBodyTag.loadProperty(FileOperation.LoadProperty(ROOT_BODY_TAG_PROPERTIES));
+                propertyBodyTag.loadProperty(FileOperation.load(ROOT_BODY_TAG_PROPERTIES));
                 rootTagBodyList = propertyBodyTag.getPropertyBodyTag();
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                 throw new ParseException(e);
             }
 
-            propertyAmmunition.loadProperty(FileOperation.LoadProperty(AMMUNITION_PROPERTIES));
+            propertyAmmunition.loadProperty(FileOperation.load(AMMUNITION_PROPERTIES));
             try {
                 ammunition = propertyAmmunition.getPropertyAmmunition();
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
