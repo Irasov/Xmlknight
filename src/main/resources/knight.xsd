@@ -19,7 +19,7 @@
       <xs:element type="xs:int" name="weight"/>
       <xs:element type="xs:int" name="price"/>
       <xs:element type="kxs:typeType" name="type"/>
-      <xs:element type="materialType" name="material"/>
+      <xs:element type="kxs:materialType" name="material"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="typeType">
