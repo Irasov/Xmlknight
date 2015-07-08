@@ -24,23 +24,24 @@ import com.epam.irasov.xmlknight.exception.ParseException;
 public class SAXKnightParser implements Parser {
     private static Logger LOGGER = Logger.getLogger(SAXKnightParser.class);
 
-    private static final String TAG_ID = "id";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_PRICE = "price";
-    private static final String TAG_WEIGHT = "weight";
-    private static final String TAG_KNIGHT = "knight";
-    private static final String TAG_ARMOR = "armor";
-    private static final String TAG_HELMET = "helmet";
-    private static final String TAG_MELEE_WEAPON = "meleeWeapon";
-    private static final String TAG_RANGED_WEAPON = "rangedWeapon";
-    private static final String TAG_SHIELD = "shield";
-    private static final String TAG_PROTECTION = "protection";
-    private static final String TAG_BALACLAVA = "balaclava";
-    private static final String TAG_MATERIAL = "material";
-    private static final String TAG_TYPE = "type";
-    private static final String TAG_CAPTURED = "captured";
-    private static final String TAG_LENGTH = "length";
-    private static final String TAG_NUMBER_OF_SHELLS = "numberOfShells";
+    public static final String TAG_ID = "id";
+    public static final String TAG_NAME = "name";
+    public static final String TAG_PRICE = "price";
+    public static final String TAG_WEIGHT = "weight";
+    public static final String TAG_KNIGHT = "knight";
+    public static final String TAG_ARMOR = "armor";
+    public static final String TAG_HELMET = "helmet";
+    public static final String TAG_MELEE_WEAPON = "meleeWeapon";
+    public static final String TAG_RANGED_WEAPON = "rangedWeapon";
+    public static final String TAG_SHIELD = "shield";
+    public static final String TAG_PROTECTION = "protection";
+    public static final String TAG_BALACLAVA = "balaclava";
+    public static final String TAG_MATERIAL = "material";
+    public static final String TAG_TYPE = "type";
+    public static final String TAG_CAPTURED = "captured";
+    public static final String TAG_LENGTH = "length";
+    public static final String TAG_NUMBER_OF_SHELLS = "numberOfShells";
+    public static final String TAG_AMMUNITION = "ammunition";
 
 
     private static final String AMMUNITION_PROPERTIES = "ammunition.properties";

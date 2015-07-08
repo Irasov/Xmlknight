@@ -10,26 +10,9 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.InputStream;
 import java.util.*;
 
-public class StAXKnightParser implements Parser {
+import static com.epam.irasov.xmlknight.parser.SAXKnightParser.*;
 
-    private static final String TAG_AMMUNITION = "ammunition";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_ID = "id";
-    private static final String TAG_PRICE = "price";
-    private static final String TAG_WEIGHT = "weight";
-    private static final String TAG_KNIGHT = "knight";
-    private static final String TAG_ARMOR = "armor";
-    private static final String TAG_HELMET = "helmet";
-    private static final String TAG_MELEE_WEAPON = "meleeWeapon";
-    private static final String TAG_RANGED_WEAPON = "rangedWeapon";
-    private static final String TAG_SHIELD = "shield";
-    private static final String TAG_PROTECTION = "protection";
-    private static final String TAG_BALACLAVA = "balaclava";
-    private static final String TAG_MATERIAL = "material";
-    private static final String TAG_TYPE = "type";
-    private static final String TAG_CAPTURED = "captured";
-    private static final String TAG_LENGTH = "length";
-    private static final String TAG_NUMBER_OF_SHELLS = "numberOfShells";
+public class StAXKnightParser implements Parser {
 
     @Override
     public Knight knightParser(InputStream inputStream) {
