@@ -12,6 +12,8 @@ public class KnightParserFactory {
                 return new SAXKnightParser();
             case STAX:
                 return new StAXKnightParser();
+            case DOM:
+                return new DOMKnightParser();
             default:
                 throw new EnumConstantNotPresentException(type.getDeclaringClass(), type.name());
         }
