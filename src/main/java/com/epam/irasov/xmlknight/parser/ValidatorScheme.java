@@ -33,7 +33,7 @@ public class ValidatorScheme {
         factory.setNamespaceAware(true);
         factory.setSchema(schema);
 
-        SAXParser parser = null;
+        SAXParser parser;
         try {
             parser = factory.newSAXParser();
             parser.parse(xmlIn, new MyHandler());
