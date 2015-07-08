@@ -31,6 +31,18 @@
             <balaclava>true</balaclava>
         </helmet>
         <meleeWeapon>
+            <id>55</id>
+            <name>melee weapon</name>
+            <weight>1</weight>
+            <price>1455</price>
+            <type>
+                <id>4</id>
+                <name>dagger</name>
+            </type>
+            <captured>true</captured>
+            <length>35</length>
+        </meleeWeapon>
+        <meleeWeapon>
             <id>5</id>
             <name>melee weapon</name>
             <weight>2</weight>
