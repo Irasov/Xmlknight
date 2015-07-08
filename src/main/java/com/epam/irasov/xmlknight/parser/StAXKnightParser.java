@@ -26,10 +26,7 @@ public class StAXKnightParser implements Parser {
 
     private static class StAXParser {
         private Knight knight;
-        private List<Ammunition> ammunitionList = new ArrayList<>();;
-        private Ammunition.Type type;
-        private Armor.Protection protection;
-        private Shield.Material material;
+        private List<Ammunition> ammunitionList = new ArrayList<>();
         private String rootTagBody;
         private XMLStreamReader streamReader;
         private String tagBody;
@@ -95,30 +92,23 @@ public class StAXKnightParser implements Parser {
                         tagBody = streamReader.getLocalName();
                         switch (tagBody) {
                             case TAG_ARMOR:
-                                type = new Ammunition.Type();
-                                protection = new Armor.Protection();
                                 ammunition = new Armor();
                                 ammunitionList.add(parseAmmunitionElement(streamReader));
                                 break;
                             case TAG_HELMET:
                                 ammunition = new Helmet();
-                                type = new Ammunition.Type();
                                 ammunitionList.add(parseAmmunitionElement(streamReader));
                                 break;
                             case TAG_MELEE_WEAPON:
                                 ammunition = new MeleeWeapon();
-                                type = new Ammunition.Type();
                                 ammunitionList.add(parseAmmunitionElement(streamReader));
                                 break;
                             case TAG_RANGED_WEAPON:
                                 ammunition = new RangedWeapon();
-                                type = new Ammunition.Type();
                                 ammunitionList.add(parseAmmunitionElement(streamReader));
                                 break;
                             case TAG_SHIELD:
                                 ammunition = new Shield();
-                                type = new Ammunition.Type();
-                                material = new Shield.Material();
                                 ammunitionList.add(parseAmmunitionElement(streamReader));
                         }
                         break;
@@ -199,6 +189,7 @@ public class StAXKnightParser implements Parser {
         }
 
         private Ammunition.Type ammunitionType(XMLStreamReader streamReader) throws XMLStreamException {
+           Ammunition.Type type = new Ammunition.Type();
             while (streamReader.hasNext()) {
                 int streamType = streamReader.next();
                 switch (streamType) {
@@ -228,6 +219,7 @@ public class StAXKnightParser implements Parser {
         }
 
         private Armor.Protection armorProtection(XMLStreamReader streamReader) throws XMLStreamException {
+            Armor.Protection protection = new Armor.Protection();
             while (streamReader.hasNext()) {
                 int streamType = streamReader.next();
                 switch (streamType) {
@@ -256,6 +248,7 @@ public class StAXKnightParser implements Parser {
         }
 
         private Shield.Material shieldMaterial(XMLStreamReader streamReader) throws XMLStreamException {
+            Shield.Material material = new Shield.Material();
             while (streamReader.hasNext()) {
                 int streamType = streamReader.next();
                 switch (streamType) {
