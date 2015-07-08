@@ -1,9 +1,6 @@
 package com.epam.irasov.xmlknight.parser;
 
-import com.epam.irasov.xmlknight.entity.Ammunition;
-import com.epam.irasov.xmlknight.entity.Armor;
-import com.epam.irasov.xmlknight.entity.Knight;
-import com.epam.irasov.xmlknight.entity.Shield;
+import com.epam.irasov.xmlknight.entity.*;
 import com.epam.irasov.xmlknight.exception.ParseException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -27,12 +24,7 @@ public class DOMKnightParser implements Parser {
     }
 
     private static class DOMParser {
-        private Knight knight;// = null;
-       // private Ammunition.Type type;
-       // private Armor.Protection protection;
-        private Shield.Material material;
-        private String rootTagBody;
-        private String tagBody;
+        private Knight knight;
         private Ammunition ammunition;
         private DocumentBuilder docBuilder;
 
@@ -59,28 +51,37 @@ public class DOMKnightParser implements Parser {
                 knight.setId(Long.valueOf(getElementTextContent(root, TAG_ID)));
                 knight.setUuid();
                 knight.setName(getElementTextContent(root, TAG_NAME));
-                NodeList aList = root.getChildNodes();
-                for (int i = 0; i < aList.getLength(); i++) {
-                    if (aList.item(i).getNodeName().equals(TAG_AMMUNITION)) {
-                        NodeList aaList = aList.item(i).getChildNodes();
-                        for (int j = 0; j < aaList.getLength(); j++) {
-                            switch (aaList.item(j).getNodeName()) {
+                NodeList childNodesKnight = root.getChildNodes();
+                Element element;
+                for (int i = 0; i < childNodesKnight.getLength(); i++) {
+                    if (childNodesKnight.item(i).getNodeName().equals(TAG_AMMUNITION)) {
+                        NodeList childNodesAmmunition = childNodesKnight.item(i).getChildNodes();
+                        for (int j = 0; j < childNodesAmmunition.getLength(); j++) {
+                            switch (childNodesAmmunition.item(j).getNodeName()) {
                                 case TAG_ARMOR:
-                                    Element element = (Element) aaList.item(j);
+                                    element = (Element) childNodesAmmunition.item(j);
                                     ammunition = new Armor();
                                     knight.addAmmunition(ammunitionParse(element));
                                     break;
                                 case TAG_HELMET:
-
+                                    element = (Element) childNodesAmmunition.item(j);
+                                    ammunition = new Helmet();
+                                    knight.addAmmunition(ammunitionParse(element));
                                     break;
                                 case TAG_MELEE_WEAPON:
-
+                                    element = (Element) childNodesAmmunition.item(j);
+                                    ammunition = new MeleeWeapon();
+                                    knight.addAmmunition(ammunitionParse(element));
                                     break;
                                 case TAG_RANGED_WEAPON:
-
+                                    element = (Element) childNodesAmmunition.item(j);
+                                    ammunition = new RangedWeapon();
+                                    knight.addAmmunition(ammunitionParse(element));
                                     break;
                                 case TAG_SHIELD:
-
+                                    element = (Element) childNodesAmmunition.item(j);
+                                    ammunition = new Shield();
+                                    knight.addAmmunition(ammunitionParse(element));
                                     break;
                             }
                         }
@@ -99,26 +100,50 @@ public class DOMKnightParser implements Parser {
             ammunition.setName(getElementTextContent(element, TAG_NAME));
             ammunition.setWeight(Integer.parseInt(getElementTextContent(element, TAG_WEIGHT)));
             ammunition.setPrice(Integer.parseInt(getElementTextContent(element, TAG_PRICE)));
-            NodeList ammunitionList = element.getChildNodes();
-            for (int i = 0; i < ammunitionList.getLength(); i++) {
-                switch (ammunitionList.item(i).getNodeName()) {
+            NodeList childNodesElementAmmunition = element.getChildNodes();
+            for (int i = 0; i < childNodesElementAmmunition.getLength(); i++) {
+                switch (childNodesElementAmmunition.item(i).getNodeName()) {
                     case TAG_TYPE:
-                        Element typeElement = (Element) ammunitionList.item(i);
+                        Element typeElement = (Element) childNodesElementAmmunition.item(i);
                         ammunition.setType(parseType(typeElement));
                         break;
                     case TAG_PROTECTION:
-                        Element protectionElement = (Element) ammunitionList.item(i);
-                        ((Armor)ammunition).setProtection(parseProtection(protectionElement));
+                        Element protectionElement = (Element) childNodesElementAmmunition.item(i);
+                        ((Armor) ammunition).setProtection(parseProtection(protectionElement));
+                        break;
+                    case TAG_BALACLAVA:
+                        ((Helmet) ammunition).setBalaclava(Boolean.parseBoolean(getElementTextContent(element, TAG_BALACLAVA)));
+                        break;
+                    case TAG_LENGTH:
+                        ((MeleeWeapon) ammunition).setLengthWeapon(Integer.parseInt(getElementTextContent(element, TAG_LENGTH)));
+                        break;
+                    case TAG_NUMBER_OF_SHELLS:
+                        ((RangedWeapon) ammunition).setNumberOfShells(Integer.parseInt(getElementTextContent(element, TAG_NUMBER_OF_SHELLS)));
+                        break;
+                    case TAG_CAPTURED:
+                        ((Weapon) ammunition).setCaptured(Boolean.parseBoolean(getElementTextContent(element, TAG_CAPTURED)));
+                        break;
+                    case TAG_MATERIAL:
+                        Element materialElement = (Element) childNodesElementAmmunition.item(i);
+                        ((Shield)ammunition).setMaterial(parseMaterial(materialElement));
                 }
             }
             return ammunition;
         }
 
+        private Shield.Material parseMaterial(Element materialElement) {
+            Shield.Material material = new Shield.Material();
+            material.setId(Long.parseLong(getElementTextContent(materialElement,TAG_ID)));
+            material.setUuid();
+            material.setName(getElementTextContent(materialElement, TAG_NAME));
+            return material;
+        }
+
         private Armor.Protection parseProtection(Element protectionElement) {
             Armor.Protection protection = new Armor.Protection();
-            protection.setId(Long.parseLong(getElementTextContent(protectionElement,TAG_ID)));
+            protection.setId(Long.parseLong(getElementTextContent(protectionElement, TAG_ID)));
             protection.setUuid();
-            protection.setName(getElementTextContent(protectionElement,TAG_NAME));
+            protection.setName(getElementTextContent(protectionElement, TAG_NAME));
             return protection;
         }
 
