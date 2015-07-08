@@ -17,19 +17,21 @@ public class Runner {
     public static final String XML_FILE = "knight.xml";
     public static final String CUSTOM_SAX_PARSER = "sax";
     public static final String CUSTOM_STAX_PARSER = "stax";
+    public static final String CUSTOM_DOM_PARSER = "dom";
     private static Logger LOGGER = Logger.getLogger(Runner.class);
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         KnightParserFactory knightParserFactory = new KnightParserFactory();
-       // Parser parser = knightParserFactory.createKnightParser(CUSTOM_SAX_PARSER);
-       Parser parser = knightParserFactory.createKnightParser(CUSTOM_STAX_PARSER);
+        // Parser parser = knightParserFactory.createKnightParser(CUSTOM_SAX_PARSER);
+        //Parser parser = knightParserFactory.createKnightParser(CUSTOM_STAX_PARSER);
+        Parser parser = knightParserFactory.createKnightParser(CUSTOM_DOM_PARSER);
         try {
             InputStream inputStream = Runner.class.getClassLoader().getResourceAsStream(XML_FILE);
             Knight knight = parser.knightParser(inputStream);
             Action.sortAmmunition(knight.getAmmunitionList(), CUSTOM_SORT_CRITERION);
             Report.report(knight);
             Report.report(Action.searchPrice(knight.getAmmunitionList(), CUSTOM_MIN_PRICE, CUSTOM_MAX_PRICE));
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             LOGGER.info(e);
         }
     }
