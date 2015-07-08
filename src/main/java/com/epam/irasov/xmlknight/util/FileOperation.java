@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class FileOperation {
     private static Logger LOGGER = Logger.getLogger(FileOperation.class);
 
-    public static InputStream LoadProperty(String filename) {
+    public static InputStream load(String filename) {
         InputStream in = null;
         try {
              in = FileOperation.class.getClassLoader().getResourceAsStream(filename);
