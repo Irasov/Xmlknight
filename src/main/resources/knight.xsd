@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="knight" type="knightType"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.epam.com.irasov/knight"
+           xmlns:kxs="http://www.epam.com.irasov/knight"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+
+  <xs:element name="knight" type="kxs:knightType"/>
   <xs:complexType name="protectionType">
     <xs:sequence>
       <xs:element type="xs:long" name="id"/>
@@ -13,7 +18,7 @@
       <xs:element type="xs:string" name="name"/>
       <xs:element type="xs:int" name="weight"/>
       <xs:element type="xs:int" name="price"/>
-      <xs:element type="typeType" name="type"/>
+      <xs:element type="kxs:typeType" name="type"/>
       <xs:element type="materialType" name="material"/>
     </xs:sequence>
   </xs:complexType>
@@ -29,7 +34,7 @@
       <xs:element type="xs:string" name="name"/>
       <xs:element type="xs:int" name="weight"/>
       <xs:element type="xs:int" name="price"/>
-      <xs:element type="typeType" name="type"/>
+      <xs:element type="kxs:typeType" name="type"/>
       <xs:element type="xs:boolean" name="captured"/>
       <xs:element type="xs:int" name="numberOfShells"/>
     </xs:sequence>
@@ -40,7 +45,7 @@
       <xs:element type="xs:string" name="name"/>
       <xs:element type="xs:int" name="weight"/>
       <xs:element type="xs:int" name="price"/>
-      <xs:element type="typeType" name="type"/>
+      <xs:element type="kxs:typeType" name="type"/>
       <xs:element type="xs:boolean" name="balaclava"/>
     </xs:sequence>
   </xs:complexType>
@@ -56,24 +61,24 @@
       <xs:element type="xs:string" name="name"/>
       <xs:element type="xs:int" name="weight"/>
       <xs:element type="xs:int" name="price"/>
-      <xs:element type="typeType" name="type"/>
-      <xs:element type="protectionType" name="protection"/>
+      <xs:element type="kxs:typeType" name="type"/>
+      <xs:element type="kxs:protectionType" name="protection"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ammunitionType">
     <xs:sequence>
-      <xs:element type="armorType" name="armor"/>
-      <xs:element type="helmetType" name="helmet"/>
-      <xs:element type="meleeWeaponType" name="meleeWeapon"/>
-      <xs:element type="rangedWeaponType" name="rangedWeapon"/>
-      <xs:element type="shieldType" name="shield"/>
+      <xs:element type="kxs:armorType" name="armor" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element type="kxs:helmetType" name="helmet" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element type="kxs:meleeWeaponType" name="meleeWeapon" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element type="kxs:rangedWeaponType" name="rangedWeapon" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element type="kxs:shieldType" name="shield" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="knightType">
     <xs:sequence>
       <xs:element type="xs:long" name="id"/>
       <xs:element type="xs:string" name="name"/>
-      <xs:element type="ammunitionType" name="ammunition"/>
+      <xs:element type="kxs:ammunitionType" name="ammunition"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="meleeWeaponType">
@@ -82,7 +87,7 @@
       <xs:element type="xs:string" name="name"/>
       <xs:element type="xs:int" name="weight"/>
       <xs:element type="xs:int" name="price"/>
-      <xs:element type="typeType" name="type"/>
+      <xs:element type="kxs:typeType" name="type"/>
       <xs:element type="xs:boolean" name="captured"/>
       <xs:element type="xs:int" name="length"/>
     </xs:sequence>
