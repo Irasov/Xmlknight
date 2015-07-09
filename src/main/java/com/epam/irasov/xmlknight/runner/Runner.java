@@ -2,6 +2,7 @@ package com.epam.irasov.xmlknight.runner;
 
 import com.epam.irasov.xmlknight.entity.*;
 import com.epam.irasov.xmlknight.logic.Action;
+import com.epam.irasov.xmlknight.parser.DOMCreatorXML;
 import com.epam.irasov.xmlknight.parser.Parser;
 import com.epam.irasov.xmlknight.parser.KnightParserFactory;
 import com.epam.irasov.xmlknight.parser.ValidatorScheme;
@@ -17,6 +18,7 @@ public class Runner {
 
     public static void main(String[] args) {
         ValidatorScheme.validator();
+        DOMCreatorXML.creator();
         KnightParserFactory knightParserFactory = new KnightParserFactory();
         Parser parser = knightParserFactory.createKnightParser(CUSTOM_PARSER);
         Knight knight = parser.knightParser(FileOperation.load(XML_FILE));
