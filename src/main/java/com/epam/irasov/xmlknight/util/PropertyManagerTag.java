@@ -2,9 +2,9 @@ package com.epam.irasov.xmlknight.util;
 
 import java.util.*;
 
-public class PropertyManagerBodyTag extends AbstractPropertyManager {
+public class PropertyManagerTag extends AbstractPropertyManager {
 
-    public List<String> getPropertyBodyTag() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public List<String> getPropertyTag() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         List<String> tagBodyList = new ArrayList<>();
         Enumeration<?> e = properties.propertyNames();
         while (e.hasMoreElements()) {
