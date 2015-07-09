@@ -1,10 +1,12 @@
 package com.epam.irasov.xmlknight.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.UUID;
-
+@XmlRootElement
 public class Helmet extends Ammunition {
+    @XmlElement
     private boolean balaclava;
-
     public Helmet() {
 
     }

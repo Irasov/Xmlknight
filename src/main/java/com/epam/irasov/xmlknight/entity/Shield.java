@@ -1,10 +1,13 @@
 package com.epam.irasov.xmlknight.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.UUID;
-
+@XmlRootElement
 public class Shield extends Ammunition {
+    @XmlElement
     private Material material;
-
+    @XmlRootElement
     public static class Material extends NamedEntity{
         public Material()  {
         }

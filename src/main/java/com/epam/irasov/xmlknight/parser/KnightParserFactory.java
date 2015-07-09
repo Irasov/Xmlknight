@@ -2,7 +2,7 @@ package com.epam.irasov.xmlknight.parser;
 
 public class KnightParserFactory {
     public enum TypeParser {
-        SAX, STAX, DOM
+        SAX, STAX, DOM, JAXB
     }
 
     public Parser createKnightParser(String typeParser) {
@@ -14,6 +14,8 @@ public class KnightParserFactory {
                 return new StAXKnightParser();
             case DOM:
                 return new DOMKnightParser();
+            case JAXB:
+                return new JAXBParser();
             default:
                 throw new EnumConstantNotPresentException(type.getDeclaringClass(), type.name());
         }

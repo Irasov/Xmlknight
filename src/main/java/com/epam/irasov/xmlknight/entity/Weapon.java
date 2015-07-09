@@ -1,8 +1,10 @@
 package com.epam.irasov.xmlknight.entity;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.UUID;
 
 public abstract class Weapon extends Ammunition {
+    @XmlElement
     private boolean captured;
 
     public Weapon() {

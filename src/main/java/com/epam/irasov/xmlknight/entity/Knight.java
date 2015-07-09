@@ -2,9 +2,13 @@ package com.epam.irasov.xmlknight.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Knight extends BaseEntity {
     private String name;
+    @XmlElement(name="ammunition")
     private List<Ammunition> ammunitionList;
     private int ammunitionPrice;
 

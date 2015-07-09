@@ -1,8 +1,11 @@
 package com.epam.irasov.xmlknight.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.UUID;
-
+@XmlRootElement
 public class RangedWeapon extends Weapon {
+    @XmlElement
     private int numberOfShells;
 
     public RangedWeapon() {
