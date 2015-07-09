@@ -3,7 +3,7 @@ package com.epam.irasov.xmlknight.parser;
 import com.epam.irasov.xmlknight.entity.*;
 import com.epam.irasov.xmlknight.util.FileOperation;
 import com.epam.irasov.xmlknight.util.PropertyManagerAmmunition;
-import com.epam.irasov.xmlknight.util.PropertyManagerBodyTag;
+import com.epam.irasov.xmlknight.util.PropertyManagerTag;
 import org.apache.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -86,13 +86,13 @@ public class SAXKnightParser implements Parser {
 
         @Override
         public void startDocument() throws SAXException {
-            PropertyManagerBodyTag propertyBodyTag = new PropertyManagerBodyTag();
+            PropertyManagerTag propertyBodyTag = new PropertyManagerTag();
             PropertyManagerAmmunition propertyAmmunition = new PropertyManagerAmmunition();
             propertyBodyTag.loadProperty(FileOperation.load(SECOND_BODY_TAG_PROPERTIES));
             try {
-                secondTagBodyList = propertyBodyTag.getPropertyBodyTag();
+                secondTagBodyList = propertyBodyTag.getPropertyTag();
                 propertyBodyTag.loadProperty(FileOperation.load(ROOT_BODY_TAG_PROPERTIES));
-                rootTagBodyList = propertyBodyTag.getPropertyBodyTag();
+                rootTagBodyList = propertyBodyTag.getPropertyTag();
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                 throw new ParseException(e);
             }
