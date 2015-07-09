@@ -1,15 +1,21 @@
 package com.epam.irasov.xmlknight.entity;
 
+import javax.xml.bind.annotation.*;
 import java.util.Comparator;
 import java.util.UUID;
-
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(name="ammunition", propOrder = {
+        "type",
+        "weight",
+        "price"
+})
 public abstract class Ammunition extends NamedEntity {
     public static final Comparator<Ammunition> WEIGHT_ORDER = new WeightComparator();
     public static final Comparator<Ammunition> PRICE_ORDER = new PriceComparator();
     private Type type;
     private int weight;
     private int price;
-
+    @XmlRootElement
     public static class Type extends NamedEntity {
         public Type() {
         }
