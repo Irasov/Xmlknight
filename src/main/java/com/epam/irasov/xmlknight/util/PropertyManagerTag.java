@@ -15,6 +15,16 @@ public class PropertyManagerTag extends AbstractPropertyManager {
         return tagBodyList;
     }
 
+    public List<String> getPropertyKey() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        List<String> tagBodyList = new ArrayList<>();
+        Enumeration<?> e = properties.propertyNames();
+        while (e.hasMoreElements()) {
+            String key = (String) e.nextElement();
+            tagBodyList.add(key);
+        }
+        return tagBodyList;
+    }
+
     public String getProperties(String key) {
         return properties.getProperty(key);
     }
