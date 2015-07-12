@@ -20,11 +20,11 @@ public class Runner {
         ValidatorScheme.validator();
         DOMCreatorXML dom = new DOMCreatorXML();
         dom.creator();
-       /* KnightParserFactory knightParserFactory = new KnightParserFactory();
+        KnightParserFactory knightParserFactory = new KnightParserFactory();
         Parser parser = knightParserFactory.createKnightParser(CUSTOM_PARSER);
         Knight knight = parser.knightParser(FileOperation.load(XML_FILE));
         Action.sortAmmunition(knight.getAmmunitionList(), CUSTOM_SORT_CRITERION);
         Report.report(knight);
-        Report.report(Action.searchPrice(knight.getAmmunitionList(), CUSTOM_MIN_PRICE, CUSTOM_MAX_PRICE));*/
+        Report.report(Action.searchPrice(knight.getAmmunitionList(), CUSTOM_MIN_PRICE, CUSTOM_MAX_PRICE));
     }
 }
