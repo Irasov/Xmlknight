@@ -1,15 +1,9 @@
 package com.epam.irasov.xmlknight.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Comparator;
 import java.util.UUID;
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name="baseentity", propOrder = {
-        "name"
-})
+
 public abstract class NamedEntity extends BaseEntity {
 
     public static final Comparator<NamedEntity> NAME_ORDER = new NameComparator();
@@ -27,7 +21,7 @@ public abstract class NamedEntity extends BaseEntity {
     public String getName() {
         return name;
     }
-
+    @XmlElement(name="name")
     public void setName(String name) {
         this.name = name;
     }

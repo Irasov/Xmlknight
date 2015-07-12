@@ -1,17 +1,10 @@
 package com.epam.irasov.xmlknight.entity;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
 import java.util.UUID;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "armor", propOrder = {
-        "protection"
-})
 public class Armor extends Ammunition {
     private Protection protection;
 
-    @XmlRootElement
     public static class Protection extends NamedEntity {
         public Protection() {
         }
@@ -29,7 +22,7 @@ public class Armor extends Ammunition {
         super(id, uuid, name, type, weight, price);
         this.protection = protection;
     }
-
+    @XmlElement(name="protection")
     public void setProtection(Protection protection) {
         this.protection = protection;
     }

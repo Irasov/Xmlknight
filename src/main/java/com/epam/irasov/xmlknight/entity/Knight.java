@@ -2,13 +2,11 @@ package com.epam.irasov.xmlknight.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
-@XmlRootElement
+@XmlRootElement(name="knight")
 public class Knight extends BaseEntity {
     private String name;
-    @XmlElement(name="ammunition")
     private List<Ammunition> ammunitionList;
     private int ammunitionPrice;
 
@@ -21,7 +19,7 @@ public class Knight extends BaseEntity {
         this();
         this.name = nameKnight;
     }
-
+    @XmlElement(name="name")
     public void setName(String knightName) {
         this.name = knightName;
     }
@@ -29,7 +27,7 @@ public class Knight extends BaseEntity {
     public String getName() {
         return name;
     }
-
+    @XmlElement(name="ammunition")
     public void setAmmunitionList(ArrayList<Ammunition> ammunitionList) {
         this.ammunitionList = ammunitionList;
         for (Ammunition ammunition : ammunitionList) {

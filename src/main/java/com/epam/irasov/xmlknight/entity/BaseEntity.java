@@ -1,11 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.UUID;
-@XmlType(name="bseentity", propOrder = {
-        "id",
-})
 public abstract class BaseEntity {
     private Long id;
     private UUID uuid;
@@ -30,7 +26,7 @@ public abstract class BaseEntity {
     public Long getId() {
         return id;
     }
-
+    @XmlElement(name="id")
     public void setId(Long id) {
         this.id = id;
     }
