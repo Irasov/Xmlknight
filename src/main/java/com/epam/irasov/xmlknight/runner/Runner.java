@@ -19,7 +19,7 @@ public class Runner {
     public static final int CUSTOM_MIN_PRICE = 500;
     public static final int CUSTOM_MAX_PRICE = 1500;
     public static final String XML_FILE = "knight.xml";
-    public static final String CUSTOM_PARSER = "jaxb";
+    public static final String CUSTOM_PARSER = "dom";
 
     public static void main(String[] args) {
         ValidatorScheme.validator();
