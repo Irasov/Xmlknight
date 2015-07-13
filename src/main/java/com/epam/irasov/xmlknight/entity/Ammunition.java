@@ -1,14 +1,7 @@
 package com.epam.irasov.xmlknight.entity;
 
-
-import com.sun.xml.internal.bind.AnyTypeAdapter;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Comparator;
 import java.util.UUID;
-//@XmlJavaTypeAdapter(AnyTypeAdapter.class)
 public abstract class Ammunition extends NamedEntity {
     public static final Comparator<Ammunition> WEIGHT_ORDER = new WeightComparator();
     public static final Comparator<Ammunition> PRICE_ORDER = new PriceComparator();
@@ -34,21 +27,18 @@ public abstract class Ammunition extends NamedEntity {
         this.weight = weight;
         this.price = price;
     }
-  //  @XmlElement(name="type")
     public void setType(Type type) {
         this.type = type;
     }
     public Type getType() {
         return this.type;
     }
- //   @XmlElement(name="weight")
     public void setWeight(int weight) {
         this.weight = weight;
     }
     public int getWeight() {
         return this.weight;
     }
- //   @XmlElement(name="price")
     public void setPrice(int price) {
         this.price = price;
     }
