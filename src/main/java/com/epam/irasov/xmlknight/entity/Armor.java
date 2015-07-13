@@ -19,7 +19,6 @@ public class Armor extends Ammunition {
     public Armor() {
 
     }
-
     public Armor(Long id, UUID uuid, String name, Type type, int weight, int price, Protection protection) {
         super(id, uuid, name, type, weight, price);
         this.protection = protection;
