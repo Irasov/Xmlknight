@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name="knight")
+@XmlRootElement(name = "knight")
 public class Knight extends BaseEntity {
     private String name;
     private List<Ammunition> ammunitionList;
@@ -19,7 +19,7 @@ public class Knight extends BaseEntity {
         this();
         this.name = nameKnight;
     }
-    @XmlElement(name="name")
+
     public void setName(String knightName) {
         this.name = knightName;
     }
@@ -27,7 +27,15 @@ public class Knight extends BaseEntity {
     public String getName() {
         return name;
     }
-    @XmlElement(name="ammunition")
+
+    @XmlElements({
+            @XmlElement(name = "armor", type = Armor.class),
+            @XmlElement(name = "helmet", type = Helmet.class),
+            @XmlElement(name = "meleeWeapon", type = MeleeWeapon.class),
+            @XmlElement(name = "rangedWeapon", type = RangedWeapon.class),
+            @XmlElement(name = "shield", type = Shield.class)
+    })
+    @XmlElementWrapper
     public void setAmmunitionList(ArrayList<Ammunition> ammunitionList) {
         this.ammunitionList = ammunitionList;
         for (Ammunition ammunition : ammunitionList) {

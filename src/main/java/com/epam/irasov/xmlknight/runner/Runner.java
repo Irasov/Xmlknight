@@ -1,6 +1,7 @@
 package com.epam.irasov.xmlknight.runner;
 
 import com.epam.irasov.xmlknight.entity.*;
+import com.epam.irasov.xmlknight.exception.ParseException;
 import com.epam.irasov.xmlknight.logic.Action;
 import com.epam.irasov.xmlknight.parser.DOMCreatorXML;
 import com.epam.irasov.xmlknight.parser.Parser;
@@ -9,12 +10,16 @@ import com.epam.irasov.xmlknight.parser.ValidatorScheme;
 import com.epam.irasov.xmlknight.reporter.Report;
 import com.epam.irasov.xmlknight.util.FileOperation;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
 public class Runner {
     public static final String CUSTOM_SORT_CRITERION = "weight";
     public static final int CUSTOM_MIN_PRICE = 500;
     public static final int CUSTOM_MAX_PRICE = 1500;
     public static final String XML_FILE = "knight.xml";
-    public static final String CUSTOM_PARSER = "dom";
+    public static final String CUSTOM_PARSER = "jaxb";
 
     public static void main(String[] args) {
         ValidatorScheme.validator();

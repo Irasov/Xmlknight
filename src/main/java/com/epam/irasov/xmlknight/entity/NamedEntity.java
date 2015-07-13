@@ -1,6 +1,5 @@
 package com.epam.irasov.xmlknight.entity;
 
-import javax.xml.bind.annotation.XmlElement;
 import java.util.Comparator;
 import java.util.UUID;
 
@@ -21,7 +20,7 @@ public abstract class NamedEntity extends BaseEntity {
     public String getName() {
         return name;
     }
-    @XmlElement(name="name")
+
     public void setName(String name) {
         this.name = name;
     }

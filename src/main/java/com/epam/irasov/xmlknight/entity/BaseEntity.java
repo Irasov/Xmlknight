@@ -18,7 +18,6 @@ public abstract class BaseEntity {
     public UUID getUuid() {
         return uuid;
     }
-
     public void setUuid() {
         this.uuid = UUID.randomUUID();
     }
@@ -26,7 +25,7 @@ public abstract class BaseEntity {
     public Long getId() {
         return id;
     }
-    @XmlElement(name="id")
+   // @XmlElement(name="id")
     public void setId(Long id) {
         this.id = id;
     }

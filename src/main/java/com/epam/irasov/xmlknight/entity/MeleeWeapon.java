@@ -1,6 +1,8 @@
 package com.epam.irasov.xmlknight.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.UUID;
+@XmlRootElement(name="meleeWeapon")
 public class MeleeWeapon extends Weapon {
     private int lengthWeapon;
 
